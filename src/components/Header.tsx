@@ -42,6 +42,7 @@ const Header: React.FC = () => {
     { name: "Testimonials", path: "/#testimonials" },
     { name: "FAQ", path: "/#faq" },
     { name: "Contact", path: "/#contact" },
+    { name: "Blog", path: "https://neurolablog.blogspot.com/" }
   ];
 
   const mobileMenuVariants = {

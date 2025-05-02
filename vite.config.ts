@@ -20,7 +20,7 @@ export default defineConfig({
     },
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://web-backend-ivhv.onrender.com',
         changeOrigin: true,
         secure: false
       }

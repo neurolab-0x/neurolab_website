@@ -10,7 +10,7 @@ export default function Footer() {
     const socialLinks = [
         { icon: <FaLinkedin />, url: "https://linkedin.com/company/neurolab", label: "LinkedIn" },
         { icon: <FaXTwitter />, url: "https://x.com/neurolab", label: "Twitter" },
-        { icon: <FaGithub />, url: "https://github.com/neurolab", label: "GitHub" },
+        { icon: <FaGithub />, url: "https://github.com/neurolab-0x", label: "GitHub" },
         { icon: <FaEnvelope />, url: "mailto:info@neurolab.cc", label: "Email" }
     ];
 
@@ -57,9 +57,9 @@ export default function Footer() {
             <div className="container mx-auto px-4 relative">
                 {/* Top Section: Logo and Social Links */}
                 <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-                    <div className="flex items-center gap-1 mb-4 md:mb-0">
-                        <img src="/logo.png" alt="Neurolab Logo" className="w-15 h-15" />
-                        <span className="text-white font-semibold text-lg">Neurolab</span>
+                    <div className="flex items-center mb-4 md:mb-0">
+                        <img src="/logo.png" alt="Neurolab Logo" className="w-25 h-25" />
+                        <span className="text-white font-bold text-xl">Neurolab</span>
                     </div>
                     <div className="flex gap-6">
                         {socialLinks.map((social, index) => (
