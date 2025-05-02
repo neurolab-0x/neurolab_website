@@ -1,0 +1,39 @@
+@import './fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: #030329;
+    min-height: 100%;
+    font-family: 'Inter', sans-serif;
+  }
+
+  body {
+    background: #030329;
+    color: white;
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Clash Display', sans-serif;
+  }
+
+  code,
+  pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .drop-shadow-glow {
+    filter: drop-shadow(0 0 0.5rem rgba(96, 165, 250, 0.5));
+  }
+}
