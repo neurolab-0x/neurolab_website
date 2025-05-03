@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const BASE_URL = 'https://web-backend-ivhv.onrender.com';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: `${BASE_URL}/api`,
   headers: {
     'Content-Type': 'application/json',
   },
