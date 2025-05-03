@@ -31,7 +31,11 @@ const LoginPage: React.FC = () => {
     try {
       const response = await api.post('/auth/login', formData);
       localStorage.setItem('token', response.data.data.token);
-      navigate('/admin');
+      if (response.status === 200 || response.status === 201 || response.status === 204) {
+        navigate('/admin');
+      } else {
+        setError(response.data.message || 'Login failed. Please try again.');
+      }
     } catch (err: any) {
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     } finally {
