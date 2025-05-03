@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import LandingPage from './page/Landing';
 import PartnerRequestPage from './page/partnerRequest';
 import AdminDashboard from './page/adminDashboard';
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           } />
         </Routes>
       </div>
+      <Analytics />
     </Router>
   );
 };
