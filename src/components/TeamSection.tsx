@@ -144,7 +144,7 @@ const TeamSection: React.FC = () => {
               </span>
             </h2>
             <p className="text-base sm:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed tracking-wide px-4">
-              Our team of high school students but with passion in neuroscience, AI and business.
+              Our team combines expertise in neuroscience, artificial intelligence, hardware engineering, and brain-computer interfaces to create innovative solutions that bridge the gap between mind and machine.
             </p>
           </div>
         </FadeInSection>

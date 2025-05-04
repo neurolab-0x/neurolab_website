@@ -1,20 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import Button from "./Button";
 import { scrollToSection } from "../utils/smoothScroll";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
+      const sections = ["home", "services", "team", "partners", "download", "testimonials", "faq", "contact"];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -36,13 +51,13 @@ const Header: React.FC = () => {
   };
 
   const tabs = [
-    { name: "Home", path: "/" },
-    { name: "Services", path: "/#services" },
-    { name: "Team", path: "/#team" },
-    { name: "Testimonials", path: "/#testimonials" },
-    { name: "FAQ", path: "/#faq" },
-    { name: "Contact", path: "/#contact" },
-    { name: "Blog", path: "https://neurolablog.blogspot.com/" }
+    { name: "Home", path: "/", section: "home" },
+    { name: "Services", path: "/#services", section: "services" },
+    { name: "Team", path: "/#team", section: "team" },
+    { name: "Testimonials", path: "/#testimonials", section: "testimonials" },
+    { name: "FAQ", path: "/#faq", section: "faq" },
+    { name: "Contact", path: "/#contact", section: "contact" },
+    { name: "Blog", path: "https://neurolablog.blogspot.com", isExternal: true }
   ];
 
   const mobileMenuVariants = {
@@ -85,8 +100,7 @@ const Header: React.FC = () => {
         ? "bg-[#030329]/50 backdrop-blur-xl border-b border-white/10"
         : "bg-transparent"
         }`}
-    >
-      {/* Background elements */}
+    > 
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-purple-500/5" />
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
@@ -124,14 +138,20 @@ const Header: React.FC = () => {
                 animate="visible"
               >
                 <button
-                  onClick={() => handleNavigation(tab.path)}
-                  className={`relative px-2 py-1 text-sm font-medium transition-colors tracking-wide ${location.pathname === tab.path
-                      ? "text-blue-400"
-                      : "text-gray-300 hover:text-blue-400"
+                  onClick={() => {
+                    if (tab.isExternal) {
+                      window.open(tab.path, '_blank', 'noopener,noreferrer');
+                    } else {
+                      handleNavigation(tab.path);
+                    }
+                  }}
+                  className={`relative px-2 py-1 text-sm font-medium transition-colors tracking-wide ${activeSection === tab.section
+                    ? "text-blue-400"
+                    : "text-gray-300 hover:text-blue-400"
                     }`}
                 >
                   {tab.name}
-                  {location.pathname === tab.path && (
+                  {activeSection === tab.section && (
                     <motion.div
                       layoutId="activeTab"
                       className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"
@@ -145,7 +165,6 @@ const Header: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button text="Download Apps" variant="primary" />
             </motion.div>
           </div>
 
@@ -259,8 +278,14 @@ const Header: React.FC = () => {
                         animate="visible"
                       >
                         <button
-                          onClick={() => handleNavigation(tab.path)}
-                          className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors tracking-wide ${location.pathname === tab.path
+                          onClick={() => {
+                            if (tab.isExternal) {
+                              window.open(tab.path, '_blank', 'noopener,noreferrer');
+                            } else {
+                              handleNavigation(tab.path);
+                            }
+                          }}
+                          className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors tracking-wide ${activeSection === tab.section
                               ? "bg-gray-800/80 text-blue-400"
                               : "text-gray-300 hover:bg-gray-800/80 hover:text-blue-400"
                             }`}
@@ -291,11 +316,6 @@ const Header: React.FC = () => {
                     animate="visible"
                     className="mt-6"
                   >
-                    <Button
-                      text="Download Apps"
-                      variant="primary"
-                      className="w-full backdrop-blur-xl bg-gray-800/80 border border-white/10"
-                    />
                   </motion.div>
                 </div>
               </div>

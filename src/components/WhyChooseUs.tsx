@@ -96,7 +96,7 @@ export default function WhyUs() {
                     <div className="text-center mb-16">
                         <h2 className="text-4xl font-bold text-white mb-4 tracking-tight">
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
-                                Why Choose Our Platform
+                                Why Choose Our Products
                             </span>
                         </h2>
                         <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed tracking-wide">

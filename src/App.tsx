@@ -6,6 +6,10 @@ import PartnerRequestPage from './page/partnerRequest';
 import AdminDashboard from './page/adminDashboard';
 import LoginPage from './page/login';
 import RegisterPage from './page/register';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import Documentation from './pages/Documentation';
+import Support from './pages/Support';
 
 const App: React.FC = () => {
   return (
@@ -19,6 +23,10 @@ const App: React.FC = () => {
           <Route path="/admin" element={
             localStorage.getItem('token') ? <AdminDashboard /> : <Navigate to="/" />
           } />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/documentation" element={<Documentation />} />
+          <Route path="/support" element={<Support />} />
         </Routes>
       </div>
       <Analytics />
