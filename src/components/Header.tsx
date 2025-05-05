@@ -10,19 +10,24 @@ const Header: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // Handle scroll events
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
-      const sections = ["home", "services", "team", "partners", "download", "testimonials", "faq", "contact"];
-      const scrollPosition = window.scrollY + 100;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
+      // Only update active section if we're on the home page
+      if (location.pathname === '/') {
+        const sections = ["home", "services", "projects", "team", "testimonials", "faq", "contact"];
+        const scrollPosition = window.scrollY + 100;
+
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const { offsetTop, offsetHeight } = element;
+            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+              setActiveSection(section);
+              break;
+            }
           }
         }
       }
@@ -31,7 +36,20 @@ const Header: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location.pathname]);
+
+  // Handle route changes
+  useEffect(() => {
+    const path = location.pathname;
+    if (path === '/') {
+      const hash = location.hash.replace('#', '');
+      if (hash) {
+        setActiveSection(hash);
+      } else {
+        setActiveSection('home');
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -41,6 +59,8 @@ const Header: React.FC = () => {
     if (path === '/') {
       navigate('/');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (path === '/products') {
+      navigate('/products');
     } else {
       const sectionId = path.replace('/#', '');
       navigate('/');
@@ -53,11 +73,12 @@ const Header: React.FC = () => {
   const tabs = [
     { name: "Home", path: "/", section: "home" },
     { name: "Services", path: "/#services", section: "services" },
+    { name: "Products", path: "/#projects", section: "projects" },
     { name: "Team", path: "/#team", section: "team" },
     { name: "Testimonials", path: "/#testimonials", section: "testimonials" },
     { name: "FAQ", path: "/#faq", section: "faq" },
     { name: "Contact", path: "/#contact", section: "contact" },
-    { name: "Blog", path: "https://neurolablog.blogspot.com", isExternal: true }
+    { name: "Blog", path: "https://neurolabog.blogspot.com", isExternal: true }
   ];
 
   const mobileMenuVariants = {
@@ -100,7 +121,7 @@ const Header: React.FC = () => {
         ? "bg-[#030329]/50 backdrop-blur-xl border-b border-white/10"
         : "bg-transparent"
         }`}
-    > 
+    >
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-transparent to-purple-500/5" />
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
@@ -286,8 +307,8 @@ const Header: React.FC = () => {
                             }
                           }}
                           className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors tracking-wide ${activeSection === tab.section
-                              ? "bg-gray-800/80 text-blue-400"
-                              : "text-gray-300 hover:bg-gray-800/80 hover:text-blue-400"
+                            ? "bg-gray-800/80 text-blue-400"
+                            : "text-gray-300 hover:bg-gray-800/80 hover:text-blue-400"
                             }`}
                         >
                           <span className="flex-1">{tab.name}</span>

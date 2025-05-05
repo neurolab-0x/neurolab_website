@@ -2,9 +2,8 @@ import FadeInSection from './FadeInSection';
 import { motion } from 'framer-motion';
 import Icon from './Icon';
 import Card from './Card';
-import { FaLinkedin, FaGithub } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaXTwitter } from 'react-icons/fa6';
 interface TeamMember {
   name: string;
   role: string;
@@ -14,6 +13,7 @@ interface TeamMember {
     linkedin?: string;
     twitter?: string;
     github?: string;
+    email?: string;
   };
 }
 
@@ -27,7 +27,8 @@ const TeamSection: React.FC = () => {
       social: {
         linkedin: "#",
         twitter: "#",
-        github: "#",
+        github: "https://github.com/Uhirwe",
+        email: "estherhope@neurolab.cc",
       }
     },
     {
@@ -39,6 +40,7 @@ const TeamSection: React.FC = () => {
         twitter: "#",
         linkedin: "https://www.linkedin.com/in/mugisha-prosper-7a5981297/",
         github: "https://github.com/mugishaprosper",
+        email: "polo@neurolab.cc",
       }
     },
     {
@@ -50,6 +52,7 @@ const TeamSection: React.FC = () => {
         linkedin: "https://www.linkedin.com/in/asimwe-landry-b23025354/",
         twitter: "#",
         github: "https://github.com/asimwe1",
+        email: "landrysb@neurolab.cc",
       }
     },
     {
@@ -61,6 +64,7 @@ const TeamSection: React.FC = () => {
         twitter: "#",
         linkedin: "https://www.linkedin.com/in/dushimire-aine-732190351/",
         github: "https://github.com/aine1100",
+        email: "ainedushimire@neurolab.cc",
       }
     },
     {
@@ -71,6 +75,7 @@ const TeamSection: React.FC = () => {
       social: {
         linkedin: "#",
         twitter: "#",
+        email: "darlen@neurolab.cc",
       }
     }
   ];
@@ -78,7 +83,7 @@ const TeamSection: React.FC = () => {
   const getCardStyle = (index: number) => {
     const centerIndex = 2;
     const distanceFromCenter = index - centerIndex;
-    const baseOffset = window.innerWidth < 768 ? 0 : 280; // No offset on mobile
+    const baseOffset = window.innerWidth < 768 ? 0 : 280;
     const zIndex = 5 - Math.abs(distanceFromCenter);
     const scale = window.innerWidth < 768 ? 1 : 1 - Math.abs(distanceFromCenter) * 0.05;
 
@@ -92,7 +97,7 @@ const TeamSection: React.FC = () => {
   const getHoverStyle = (index: number) => {
     const centerIndex = 2;
     const distanceFromCenter = index - centerIndex;
-    const baseOffset = window.innerWidth < 768 ? 0 : 280; // No offset on mobile
+    const baseOffset = window.innerWidth < 768 ? 0 : 280;
     const scale = window.innerWidth < 768 ? 1 : 1 - Math.abs(distanceFromCenter) * 0.05;
 
     return {
@@ -284,16 +289,6 @@ const TeamSection: React.FC = () => {
                       <FaLinkedin size={20} />
                     </a>
                   )}
-                  {member.social.twitter && (
-                    <a
-                      href={member.social.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-lg bg-gray-800/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500 transition-all duration-300"
-                    >
-                      <FaXTwitter size={20} />
-                    </a>
-                  )}
                   {member.social.github && (
                     <a
                       href={member.social.github}
@@ -302,6 +297,14 @@ const TeamSection: React.FC = () => {
                       className="w-10 h-10 rounded-lg bg-gray-800/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500 transition-all duration-300"
                     >
                       <FaGithub size={20} />
+                    </a>
+                  )}
+                  {member.social.email && (
+                    <a
+                      href={`mailto:${member.social.email}`}
+                      className="w-10 h-10 rounded-lg bg-gray-800/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-gradient-to-br hover:from-blue-500 hover:to-purple-500 transition-all duration-300"
+                    >
+                      <FaEnvelope size={20} />
                     </a>
                   )}
                 </div>

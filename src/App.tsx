@@ -10,6 +10,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import Documentation from './pages/Documentation';
 import Support from './pages/Support';
+import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 
 const App: React.FC = () => {
   return (
@@ -27,6 +29,8 @@ const App: React.FC = () => {
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/documentation" element={<Documentation />} />
           <Route path="/support" element={<Support />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetail />} />
         </Routes>
       </div>
       <Analytics />
