@@ -35,7 +35,7 @@ const TeamSection: React.FC = () => {
       name: "Mugisha Prosper",
       role: "Co-Founder and AI Research Director",
       expertise: ["Deep Learning", "Machine Learning", "Data Science"],
-      image: "/team/polo.jpg",
+      image: "/team/polo.png",
       social: {
         twitter: "#",
         linkedin: "https://www.linkedin.com/in/mugisha-prosper-7a5981297/",
@@ -47,7 +47,7 @@ const TeamSection: React.FC = () => {
       name: "Asimwe Landry",
       role: "Founder and CEO",
       expertise: ["Marketing", "Sales", "Business Development"],
-      image: "/team/landry.jpg",
+      image: "/team/landry.png",
       social: {
         linkedin: "https://www.linkedin.com/in/asimwe-landry-b23025354/",
         twitter: "#",
@@ -61,7 +61,6 @@ const TeamSection: React.FC = () => {
       expertise: ["Software Development", "System Architecture", "UI/UX Design"],
       image: "/team/aine.jpg",
       social: {
-        twitter: "#",
         linkedin: "https://www.linkedin.com/in/dushimire-aine-732190351/",
         github: "https://github.com/aine1100",
         email: "ainedushimire@neurolab.cc",
@@ -71,11 +70,12 @@ const TeamSection: React.FC = () => {
       name: "Atumanyire Winnie Darlen",
       role: "Marketing and Sales representative",
       expertise: ["Presentation Design", "UI/UX Design", "User Research"],
-      image: "/team/winnie.jpg",
+      image: "/team/winnie.png",
       social: {
         linkedin: "#",
         twitter: "#",
         email: "darlen@neurolab.cc",
+        github: "https://github.com/Winnie-DeinCoder",
       }
     }
   ];

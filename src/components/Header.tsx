@@ -132,16 +132,16 @@ const Header: React.FC = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-1"
+            className="flex items-center justify-between space-x-2 cursor-pointer"
           >
-            <div className="w-20 h-20 relative">
+            <div className="w-12 h-12 relative gap-10">
               <img
-                src="/logo.svg"
+                src="/logo.png"
                 alt="NeuroLab Logo"
                 className="w-full h-full object-contain"
               />
             </div>
-            <h1 className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-blue-600 bg-clip-text text-transparent tracking-tight">
+            <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent tracking-tight">
               Neurolab
             </h1>
           </motion.div>

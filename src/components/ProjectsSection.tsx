@@ -10,6 +10,10 @@ const ProjectsSection: React.FC = () => {
   // Get the first 6 products to showcase
   const featuredProducts = products.slice(0, 6);
 
+  const handleProductsClick = () => {
+    window.open("https://web.neurolab.cc/products", "_blank");
+  };
+
   return (
     <section id="projects" className="py-20 bg-[#030329] relative overflow-hidden">
       {/* Background elements */}
@@ -104,7 +108,7 @@ const ProjectsSection: React.FC = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => navigate('/products')}
+              onClick={() => handleProductsClick()}
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-semibold tracking-wide hover:from-blue-600 hover:to-purple-600 transition-all duration-200 shadow-lg hover:shadow-blue-500/25"
             >
               View All Products

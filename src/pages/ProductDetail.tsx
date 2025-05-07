@@ -10,6 +10,10 @@ const ProductDetail: React.FC = () => {
   const navigate = useNavigate();
   const product = products.find(p => p.id === Number(id));
 
+  const handleContactSales = (product: Product) => {
+    window.open(`https://web.neurolab.cc/products/product-detail/${product.id}/payment`, "_blank")
+  }
+
   if (!product) {
     return (
       <div className="font-sans bg-[#030329] text-white min-h-screen">
@@ -20,7 +24,7 @@ const ProductDetail: React.FC = () => {
               Product Not Found
             </h1>
             <button
-              onClick={() => navigate('/products')}
+              onClick={() => navigate('/#products')}
               className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300"
             >
               Back to Products
@@ -75,7 +79,7 @@ const ProductDetail: React.FC = () => {
                 <div className="mt-6">
                   <span className="text-3xl font-bold text-white">${product.price}</span>
                 </div>
-                <button className="mt-6 w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                <button className="mt-6 w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-300" onClick={() => handleContactSales(product)}>
                   Contact Sales
                 </button>
               </div>

@@ -8,7 +8,7 @@ export default function Footer() {
     };
 
     const socialLinks = [
-        { icon: <FaLinkedin />, url: "https://linkedin.com/company/neurolab", label: "LinkedIn" },
+        { icon: <FaLinkedin />, url: "https://linkedin.com/company/neurolab-cc", label: "LinkedIn" },
         { icon: <FaXTwitter />, url: "https://x.com/neurolab", label: "Twitter" },
         { icon: <FaGithub />, url: "https://github.com/neurolab-0x", label: "GitHub" },
         { icon: <FaEnvelope />, url: "mailto:info@neurolab.cc", label: "Email" }
