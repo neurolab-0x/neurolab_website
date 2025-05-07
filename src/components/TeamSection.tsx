@@ -69,7 +69,7 @@ const TeamSection: React.FC = () => {
     {
       name: "Atumanyire Winnie Darlen",
       role: "Marketing and Sales representative",
-      expertise: ["Presentation Design", "UI/UX Design", "User Research"],
+      expertise: ["Social Media Marketing", "Sales", "Business Development"],
       image: "/team/winnie.png",
       social: {
         linkedin: "#",
