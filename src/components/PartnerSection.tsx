@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FadeInSection from './FadeInSection';
-import { FaExternalLinkAlt, FaHandshake, FaCheckCircle } from 'react-icons/fa';
+import { FaHandshake, FaCheckCircle } from 'react-icons/fa';
+import { FaXmark } from 'react-icons/fa6';
 
 interface Partner {
   name: string;
@@ -145,11 +146,11 @@ const PartnerSection: React.FC = () => {
                     onClick={() => setSelectedPartner(partner)}
                   >
                     <div className="flex flex-col items-center text-center">
-                      <div className="w-24 h-24 mb-4 relative group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-full h-full mb-4 relative group-hover:scale-110 transition-transform duration-300">
                         <img
                           src={partner.logo}
                           alt={partner.name}
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-contain rounded-md"
                         />
                         <motion.div
                           className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20"
@@ -199,7 +200,7 @@ const PartnerSection: React.FC = () => {
 
                   {/* Content container */}
                   <div className="relative z-10">
-                    <div className="flex items-start justify-between mb-8">
+                    <div className="flex items-center justify-between mb-8">
                       <div className="flex items-center space-x-6">
                         <div className="relative">
                           <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 blur-sm" />
@@ -217,17 +218,18 @@ const PartnerSection: React.FC = () => {
                           </div>
                         </div>
                       </div>
-                      <motion.a
-                        href={selectedPartner.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        className="text-blue-400 hover:text-blue-300 transition-colors"
-                      >
-                        <FaExternalLinkAlt size={20} />
-                      </motion.a>
+                      <div className='mb-10'>
+                        <motion.a
+                          onClick={() => setSelectedPartner(null)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          whileHover={{ scale: 1.1 }}
+                          className="text-blue-400 hover:text-blue-300 transition-colors cursor-pointer"
+                        >
+                          <FaXmark size={32} onClick={() => setSelectedPartner(null)}/>
+                        </motion.a>
+                      </div>
                     </div>
-
                     <div className="space-y-8">
                       <div className="relative">
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-lg" />
@@ -258,28 +260,17 @@ const PartnerSection: React.FC = () => {
                         </ul>
                       </div>
                     </div>
-
-                    {/* Close button */}
-                    <motion.button
-                      onClick={() => setSelectedPartner(null)}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
-                    >
-                      <svg
-                        className="w-6 h-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
+                    <div className='inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-lg flex justify-center items-center p-2 mt-4'>
+                      <motion.a
+                        href={selectedPartner.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.1 }}
+                        className="text-blue-400 hover:text-blue-300 transition-colors"
                       >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </motion.button>
+                        <p className='text-lg font-bold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text'>Visit site</p>
+                      </motion.a>
+                    </div>
                   </div>
                 </motion.div>
               </motion.div>

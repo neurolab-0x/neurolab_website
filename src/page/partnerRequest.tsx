@@ -128,7 +128,7 @@ const PartnerRequestPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#030329] relative overflow-hidden">
+    <div className="min-h-screen bg-[#030329] relative overflow-hidden pt-5">
       <Header />
 
       {/* Background elements */}
@@ -164,15 +164,15 @@ const PartnerRequestPage: React.FC = () => {
 
       <div className="container mx-auto px-4 py-20 relative">
         <FadeInSection direction="up" delay={0.2}>
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
               className="inline-block mb-6"
             >
-              <span className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-gray-300 backdrop-blur-sm">
-                🤝 Partnership Program
+              <span className="p-2 px-4 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-gray-300 backdrop-blur-sm">
+                🤝 Neurolab Partnership Program
               </span>
             </motion.div>
             <h1 className="text-4xl font-bold text-white mb-4 tracking-tight">
@@ -182,7 +182,6 @@ const PartnerRequestPage: React.FC = () => {
             </h1>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed tracking-wide">
               Join our network of trusted partners and help shape the future of EEG analysis technology.
-              Together, we can make brain data more accessible and meaningful.
             </p>
           </div>
         </FadeInSection>
