@@ -11,18 +11,16 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title,
-  description,
-  image = '/og-image.jpg',
+  image = '/logo.png',
   url = 'https://neurolab.cc',
   type = 'website'
 }) => {
   const { i18n } = useTranslation();
-  const defaultTitle = 'Neurolab - AI Neuroscience Solutions for Tomorrow';
-  const defaultDescription = 'Neurolab is a leading provider of AI neuroscience solutions. Our cutting-edge technology helps researchers and clinicians advance neuroscience research and improve patient care.';
+  const defaultTitle = 'Neurolab - AI EEG Data processing and analysis';
+  const defaultDescription = 'Neurolab is a leading provider of AI EEG data processing and analysis. Our cutting-edge technology helps researchers and clinicians advance neuroscience research and improve patient care.';
 
-  const seoTitle = title ? `${title} | Neurolab` : defaultTitle;
-  const seoDescription = description || defaultDescription;
+  const seoTitle = defaultTitle ? `${defaultTitle}` : defaultTitle;
+  const seoDescription = defaultDescription ? `${defaultDescription}` : defaultDescription;
 
   return (
     <Helmet>

@@ -1,54 +1,34 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Outlet } from '@remix-run/react';
+import Header from './Header';
+import Footer from './Footer';
+import SkipLink from './SkipLink';
 import SEO from './SEO';
 import StructuredData from './StructuredData';
-import SkipLink from './SkipLink';
+import { useTranslation } from 'react-i18next';
 
 interface LayoutProps {
-  children: React.ReactNode;
-  title?: string;
-  description?: string;
-  image?: string;
-  type?: string;
+  children?: React.ReactNode;
 }
 
-const Layout: React.FC<LayoutProps> = ({
-  children,
-  title,
-  description,
-  image,
-  type = 'website'
-}) => {
-  const location = useLocation();
-  const url = `https://neurolab.cc${location.pathname}`;
+export function Layout({ children }: LayoutProps) {
+  const { t } = useTranslation();
 
   return (
     <>
       <SkipLink />
       <SEO
-        title={title}
-        description={description}
-        image={image}
-        url={url}
-        type={type}
+        title={t('site.title')}
+        description={t('site.description')}
+        type="website"
       />
       <StructuredData type="Organization" />
-      <StructuredData type="WebSite" />
-      <StructuredData type="WebPage" />
-      <header role="banner">
-        {/* Your header content */}
-      </header>
-      <nav role="navigation" aria-label="Main navigation">
-        {/* Your navigation content */}
-      </nav>
-      <main id="main-content" role="main" tabIndex={-1}>
-        {children}
-      </main>
-      <footer role="contentinfo">
-        {/* Your footer content */}
-      </footer>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main id="main-content" className="flex-grow">
+          {children || <Outlet />}
+        </main>
+        <Footer />
+      </div>
     </>
   );
-};
-
-export default Layout; 
+} 
