@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
@@ -10,52 +9,51 @@ interface SEOProps {
   type?: string;
 }
 
-const SEO: React.FC<SEOProps> = ({
+export default function SEO({
+  title,
+  description,
   image = '/logo.png',
-  url = 'https://neurolab.cc',
-  type = 'website'
-}) => {
-  const { i18n } = useTranslation();
-  const defaultTitle = 'Neurolab - AI EEG Data processing and analysis';
-  const defaultDescription = 'Neurolab is a leading provider of AI EEG data processing and analysis. Our cutting-edge technology helps researchers and clinicians advance neuroscience research and improve patient care.';
+  url,
+  type = 'website',
+}: SEOProps) {
+  const { t } = useTranslation();
+  const siteTitle = t('site.title');
+  const siteDescription = t('site.description');
+  const siteUrl = import.meta.env.VITE_SITE_URL || 'https://neurolab.cc';
 
-  const seoTitle = defaultTitle ? `${defaultTitle}` : defaultTitle;
-  const seoDescription = defaultDescription ? `${defaultDescription}` : defaultDescription;
+  const seo = {
+    title: title ? `${title} | ${siteTitle}` : siteTitle,
+    description: description || siteDescription,
+    image: image.startsWith('http') ? image : `${siteUrl}${image}`,
+    url: url ? `${siteUrl}${url}` : siteUrl,
+    type,
+  };
 
   return (
     <Helmet>
-      {/* Basic Meta Tags */}
-      <title>{seoTitle}</title>
-      <meta name="description" content={seoDescription} />
-      <meta name="language" content={i18n.language} />
-      <link rel="alternate" hrefLang="en" href="https://neurolab.cc/en" />
-      <link rel="alternate" hrefLang="es" href="https://neurolab.cc/es" />
-      <link rel="alternate" hrefLang="fr" href="https://neurolab.cc/fr" />
-      <link rel="alternate" hrefLang="de" href="https://neurolab.cc/de" />
-      <link rel="alternate" hrefLang="zh" href="https://neurolab.cc/zh" />
-      <link rel="alternate" hrefLang="ar" href="https://neurolab.cc/ar" />
-      <link rel="canonical" href={url} />
+      {/* Basic meta tags */}
+      <title>{seo.title}</title>
+      <meta name="description" content={seo.description} />
 
-      {/* Open Graph Meta Tags */}
-      <meta property="og:title" content={seoTitle} />
-      <meta property="og:description" content={seoDescription} />
-      <meta property="og:image" content={image} />
-      <meta property="og:url" content={url} />
-      <meta property="og:type" content={type} />
-      <meta property="og:site_name" content="Neurolab" />
-      <meta property="og:locale" content={i18n.language} />
+      {/* Open Graph meta tags */}
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:description" content={seo.description} />
+      <meta property="og:type" content={seo.type} />
+      <meta property="og:url" content={seo.url} />
+      <meta property="og:image" content={seo.image} />
+      <meta property="og:image:alt" content={seo.title} />
+      <meta property="og:site_name" content={siteTitle} />
 
-      {/* Twitter Card Meta Tags */}
+      {/* Twitter Card meta tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={seoTitle} />
-      <meta name="twitter:description" content={seoDescription} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:description" content={seo.description} />
+      <meta name="twitter:image" content={seo.image} />
+      <meta name="twitter:image:alt" content={seo.title} />
 
-      {/* Additional Meta Tags */}
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="theme-color" content="#030329" />
+      {/* Additional meta tags */}
+      <meta name="robots" content="index, follow" />
+      <link rel="canonical" href={seo.url} />
     </Helmet>
   );
-};
-
-export default SEO; 
+} 

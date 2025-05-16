@@ -22,7 +22,7 @@ export const products: Product[] = [
     id: 1,
     name: "Custom EEG Hardware System",
     description: "High-precision EEG acquisition system with 32 channels, designed for research-grade brain activity recording",
-    price: 2499.29,
+    price: 2493.29,
     image: "/products/hardware_system.jpg",
     category: "EEG",
     specifications: {

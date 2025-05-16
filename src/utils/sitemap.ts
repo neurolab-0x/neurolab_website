@@ -2,7 +2,7 @@ import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
 
 const languages = ['en', 'es', 'fr', 'de', 'zh', 'ar'];
-const baseUrl = 'https://neurolab.com';
+const baseUrl = 'https://neurolab.cc';
 
 const routes = [
   { url: '/', changefreq: 'daily', priority: 1.0 },
