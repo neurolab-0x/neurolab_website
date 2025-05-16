@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ErrorInfo, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 
 interface Props {
@@ -9,41 +9,36 @@ interface Props {
 interface State {
   hasError: boolean;
   error: Error | null;
-  errorInfo: ErrorInfo | null;
 }
 
 class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false,
-    error: null,
-    errorInfo: null
-  };
-
-  public static getDerivedStateFromError(error: Error): State {
-    return {
-      hasError: true,
-      error,
-      errorInfo: null
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      error: null
     };
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Uncaught error:', error, errorInfo);
-    this.setState({
-      error,
-      errorInfo
-    });
+  static getDerivedStateFromError(error: Error): State {
+    return {
+      hasError: true,
+      error
+    };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+    console.error('Error caught by ErrorBoundary:', error, errorInfo);
   }
 
   private handleReset = () => {
     this.setState({
       hasError: false,
-      error: null,
-      errorInfo: null
+      error: null
     });
   };
 
-  public render() {
+  public render(): ReactNode {
     if (this.state.hasError) {
       if (this.props.fallback) {
         return this.props.fallback;
@@ -87,7 +82,6 @@ class ErrorBoundary extends Component<Props, State> {
                 <div className="mt-2 text-sm text-red-700">
                   <pre className="whitespace-pre-wrap">
                     {this.state.error.toString()}
-                    {this.state.errorInfo?.componentStack}
                   </pre>
                 </div>
               </div>

@@ -1,33 +1,27 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { createPortal } from 'react-dom';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface AccessibleTooltipProps {
   content: string;
-  children: React.ReactNode;
+  children: React.ReactElement;
   position?: 'top' | 'bottom' | 'left' | 'right';
-  delay?: number;
-  className?: string;
 }
 
 const AccessibleTooltip: React.FC<AccessibleTooltipProps> = ({
   content,
   children,
-  position = 'top',
-  delay = 200,
-  className = ''
+  position = 'top'
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
   const triggerRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const tooltipId = `tooltip-${Math.random().toString(36).substr(2, 9)}`;
 
   const updatePosition = () => {
     if (triggerRef.current) {
       const rect = triggerRef.current.getBoundingClientRect();
       const scrollX = window.scrollX;
       const scrollY = window.scrollY;
-
       switch (position) {
         case 'top':
           setCoords({
@@ -58,19 +52,11 @@ const AccessibleTooltip: React.FC<AccessibleTooltipProps> = ({
   };
 
   const handleMouseEnter = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    timeoutRef.current = setTimeout(() => {
-      updatePosition();
-      setIsVisible(true);
-    }, delay);
+    updatePosition();
+    setIsVisible(true);
   };
 
   const handleMouseLeave = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
     setIsVisible(false);
   };
 
@@ -79,84 +65,60 @@ const AccessibleTooltip: React.FC<AccessibleTooltipProps> = ({
     setIsVisible(true);
   };
 
-  const handleBlur = () => {
-    setIsVisible(false);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
-
-  const getPositionStyles = () => {
-    const baseStyles = 'absolute z-50 px-2 py-1 text-sm text-white bg-gray-900 rounded shadow-lg';
-    const arrowSize = 6;
-
-    switch (position) {
-      case 'top':
-        return `
-          ${baseStyles}
-          transform -translate-x-1/2 -translate-y-full
-          bottom-full mb-${arrowSize}
-        `;
-      case 'bottom':
-        return `
-          ${baseStyles}
-          transform -translate-x-1/2
-          top-full mt-${arrowSize}
-        `;
-      case 'left':
-        return `
-          ${baseStyles}
-          transform -translate-x-full -translate-y-1/2
-          right-full mr-${arrowSize}
-        `;
-      case 'right':
-        return `
-          ${baseStyles}
-          transform -translate-y-1/2
-          left-full ml-${arrowSize}
-        `;
+  const handleBlur = (e: React.FocusEvent) => {
+    // Only hide if focus is leaving the entire tooltip container
+    if (!triggerRef.current?.contains(e.relatedTarget as Node)) {
+      setIsVisible(false);
     }
   };
 
-  return (
-    <>
-      <div
-        ref={triggerRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        role="tooltip"
-        tabIndex={0}
-        className={className}
-      >
-        {children}
-      </div>
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setIsVisible(false);
+    }
+  };
 
-      {isVisible &&
-        createPortal(
+  // Clone the child element and add our event handlers
+  const triggerElement = React.cloneElement(children, {
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+    onFocus: handleFocus,
+    onBlur: handleBlur,
+    onKeyDown: handleKeyDown,
+    'aria-describedby': isVisible ? tooltipId : undefined
+  });
+
+  return (
+    <div ref={triggerRef}>
+      {triggerElement}
+      <AnimatePresence>
+        {isVisible && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.1 }}
-            className={getPositionStyles()}
-            style={{
-              left: coords.x,
-              top: coords.y
-            }}
+            id={tooltipId}
             role="tooltip"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+            style={{
+              position: 'absolute',
+              left: coords.x,
+              top: coords.y,
+              transform: 'translate(-50%, -100%)',
+              zIndex: 50,
+              padding: '0.5rem 1rem',
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              color: 'white',
+              borderRadius: '0.25rem',
+              fontSize: '0.875rem',
+              pointerEvents: 'none'
+            }}
           >
             {content}
-          </motion.div>,
-          document.body
+          </motion.div>
         )}
-    </>
+      </AnimatePresence>
+    </div>
   );
 };
 

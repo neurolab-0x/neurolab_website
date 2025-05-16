@@ -7,12 +7,7 @@ module.exports = {
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/src/test/__mocks__/fileMock.js'
   },
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest'
+    '^.+\\.(ts|tsx)$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.app.json' }]
   },
-  testMatch: ['**/__tests__/**/*.test.(ts|tsx)'],
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json'
-    }
-  }
+  testMatch: ['**/__tests__/**/*.test.(ts|tsx)']
 }; 
