@@ -1,0 +1,83 @@
+{
+  "name": "Neurolab - AI-Powered EEG Analysis Platform",
+  "short_name": "Neurolab",
+  "description": "Transform your EEG research with Neurolab's AI-powered platform. Advanced signal processing, automated analysis, and real-time insights for neuroscience research and clinical applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030329",
+  "theme_color": "#030329",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "science",
+    "medical",
+    "productivity",
+    "utilities",
+    "neuroscience",
+    "eeg",
+    "brain",
+    "analysis",
+    "processing",
+    "research",
+    "clinical",
+    "application"
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/dashboard.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "Neurolab Dashboard"
+    },
+    {
+      "src": "/screenshots/analysis.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "EEG Analysis Interface"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "View your EEG analysis dashboard",
+      "url": "/dashboard",
+      "icons": [
+        {
+          "src": "/icons/dashboard.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "New Analysis",
+      "short_name": "New Analysis",
+      "description": "Start a new EEG analysis",
+      "url": "/analysis/new",
+      "icons": [
+        {
+          "src": "/icons/analysis.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "lang": "en-US",
+  "dir": "ltr",
+  "prefer_related_applications": false
+}
