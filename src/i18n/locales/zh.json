@@ -1,0 +1,42 @@
+{
+  "common": {
+    "home": "首页",
+    "services": "服务",
+    "products": "产品",
+    "team": "团队",
+    "testimonials": "客户评价",
+    "faq": "常见问题",
+    "contact": "联系我们",
+    "blog": "博客",
+    "login": "登录",
+    "register": "注册",
+    "language": "语言"
+  },
+  "header": {
+    "menu": "菜单",
+    "close": "关闭"
+  },
+  "hero": {
+    "title": "欢迎来到 NeuroLab",
+    "subtitle": "为明天提供创新解决方案",
+    "cta": "开始使用"
+  },
+  "services": {
+    "title": "我们的服务",
+    "subtitle": "我们提供的服务"
+  },
+  "contact": {
+    "title": "联系我们",
+    "name": "姓名",
+    "email": "电子邮件",
+    "message": "消息",
+    "send": "发送消息",
+    "success": "消息发送成功！",
+    "error": "发送消息时出错。请重试。"
+  },
+  "footer": {
+    "copyright": "© 2024 NeuroLab. 保留所有权利。",
+    "privacy": "隐私政策",
+    "terms": "服务条款"
+  }
+}

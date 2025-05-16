@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { scrollToSection } from "../utils/smoothScroll";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -9,6 +11,7 @@ const Header: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>("home");
   const location = useLocation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // Handle scroll events
   useEffect(() => {
@@ -71,14 +74,14 @@ const Header: React.FC = () => {
   };
 
   const tabs = [
-    { name: "Home", path: "/", section: "home" },
-    { name: "Services", path: "/#services", section: "services" },
-    { name: "Products", path: "/#projects", section: "projects" },
-    { name: "Team", path: "/#team", section: "team" },
-    { name: "Testimonials", path: "/#testimonials", section: "testimonials" },
-    { name: "FAQ", path: "/#faq", section: "faq" },
-    { name: "Contact", path: "/#contact", section: "contact" },
-    { name: "Blog", path: "https://neurolabog.blogspot.com", isExternal: true }
+    { name: t('common.home'), path: "/", section: "home" },
+    { name: t('common.services'), path: "/#services", section: "services" },
+    { name: t('common.products'), path: "/#projects", section: "projects" },
+    { name: t('common.team'), path: "/#team", section: "team" },
+    { name: t('common.testimonials'), path: "/#testimonials", section: "testimonials" },
+    { name: t('common.faq'), path: "/#faq", section: "faq" },
+    { name: t('common.contact'), path: "/#contact", section: "contact" },
+    { name: t('common.blog'), path: "https://neurolabog.blogspot.com", isExternal: true }
   ];
 
   const mobileMenuVariants = {
@@ -182,11 +185,7 @@ const Header: React.FC = () => {
                 </button>
               </motion.div>
             ))}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-            </motion.div>
+            <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
@@ -195,28 +194,21 @@ const Header: React.FC = () => {
             whileTap={{ scale: 0.95 }}
             className="md:hidden p-2 rounded-lg bg-gray-800/50 backdrop-blur-sm border border-white/10"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={t('header.menu')}
           >
             <svg
               className="w-6 h-6 text-white"
               fill="none"
-              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               viewBox="0 0 24 24"
+              stroke="currentColor"
             >
               {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </motion.button>
@@ -337,6 +329,9 @@ const Header: React.FC = () => {
                     animate="visible"
                     className="mt-6"
                   >
+                    <div className="px-4 py-2">
+                      <LanguageSwitcher />
+                    </div>
                   </motion.div>
                 </div>
               </div>

@@ -7,21 +7,33 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:accessibility": "jest --config jest.config.cjs --testMatch=\"**/__tests__/**/*.test.(ts|tsx)\" --testPathIgnorePatterns=node_modules",
+    "test:accessibility:watch": "jest --config jest.config.cjs --testMatch=\"**/__tests__/**/*.test.(ts|tsx)\" --testPathIgnorePatterns=node_modules --watch"
   },
   "dependencies": {
+    "@testing-library/react": "^16.3.0",
     "@vercel/analytics": "^1.5.0",
     "axios": "^1.9.0",
     "framer-motion": "^11.18.2",
+    "i18next": "^25.1.3",
+    "i18next-browser-languagedetector": "^8.1.0",
+    "i18next-http-backend": "^3.0.2",
     "lucide-react": "^0.503.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
+    "react-i18next": "^15.5.1",
     "react-icons": "^5.4.0",
     "react-intersection-observer": "^9.13.1",
-    "react-router-dom": "^7.1.5"
+    "react-router-dom": "^7.1.5",
+    "sitemap": "^8.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^29.5.14",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@types/three": "^0.176.0",
@@ -31,8 +43,11 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
+    "ts-jest": "^29.3.3",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
     "vite": "^5.4.10"

@@ -1,0 +1,71 @@
+/* RTL Support Styles */
+[dir="rtl"] {
+  /* Text alignment */
+  text-align: right;
+
+  /* Margins and paddings */
+  .space-x-2> :not([hidden])~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  .space-x-8> :not([hidden])~ :not([hidden]) {
+    --tw-space-x-reverse: 1;
+  }
+
+  /* Flexbox direction */
+  .flex {
+    flex-direction: row-reverse;
+  }
+
+  /* Navigation items */
+  .nav-item {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+
+  /* Dropdown menus */
+  .dropdown-menu {
+    right: auto;
+    left: 0;
+  }
+
+  /* Icons and arrows */
+  .arrow-icon {
+    transform: scaleX(-1);
+  }
+
+  /* Form elements */
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    text-align: right;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    padding-right: 1.5rem;
+    padding-left: 0;
+  }
+
+  /* Buttons with icons */
+  .button-with-icon {
+    flex-direction: row-reverse;
+  }
+
+  /* Modal and dialog boxes */
+  .modal-content {
+    text-align: right;
+  }
+
+  /* Tables */
+  th,
+  td {
+    text-align: right;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    direction: rtl;
+  }
+}

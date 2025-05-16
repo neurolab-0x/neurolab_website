@@ -1,0 +1,42 @@
+{
+  "common": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "products": "Produkte",
+    "team": "Team",
+    "testimonials": "Referenzen",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "language": "Sprache"
+  },
+  "header": {
+    "menu": "Menü",
+    "close": "Schließen"
+  },
+  "hero": {
+    "title": "Willkommen bei NeuroLab",
+    "subtitle": "Innovative Lösungen für Morgen",
+    "cta": "Loslegen"
+  },
+  "services": {
+    "title": "Unsere Dienstleistungen",
+    "subtitle": "Was Wir Bieten"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie Uns",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "send": "Nachricht Senden",
+    "success": "Nachricht erfolgreich gesendet!",
+    "error": "Fehler beim Senden der Nachricht. Bitte versuchen Sie es erneut."
+  },
+  "footer": {
+    "copyright": "© 2024 NeuroLab. Alle Rechte vorbehalten.",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen"
+  }
+}
