@@ -6,7 +6,6 @@ import TeamSection from "../components/TeamSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import FAQSection from "../components/FAQSection";
 import Contact from "../components/contact";
-import Footer from "../components/Footer";
 import FadeInSection from "../components/FadeInSection";
 import PartnerSection from "../components/PartnerSection";
 
@@ -67,13 +66,6 @@ const LandingPage: React.FC = () => {
       <FadeInSection>
         <div id="contact">
           <Contact />
-        </div>
-      </FadeInSection>
-
-      {/* Footer */}
-      <FadeInSection>
-        <div id="footer">
-          <Footer />
         </div>
       </FadeInSection>
     </div>

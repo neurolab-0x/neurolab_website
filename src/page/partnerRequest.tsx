@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import FadeInSection from "../components/FadeInSection";
 import api from '../config/api';
 
@@ -336,8 +335,6 @@ const PartnerRequestPage: React.FC = () => {
           </div>
         </FadeInSection>
       </div>
-
-      <Footer />
     </div>
   );
 };
