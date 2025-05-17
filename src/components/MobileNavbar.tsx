@@ -43,7 +43,7 @@ const MobileNavbar: React.FC = () => {
           {/* Overlay */}
           <div className="absolute inset-0 bg-black bg-opacity-50" onClick={() => setOpen(false)} />
           {/* Drawer */}
-          <div className="relative w-3/4 max-w-xs h-full flex flex-col animate-slideInLeft overflow-y-auto border-r border-white/10 shadow-2xl">
+          <div className="relative w-full h-screen flex flex-col animate-slideInLeft overflow-y-auto border-r border-white/10 shadow-2xl">
             {/* Gradient and grid backgrounds */}
             <div className="absolute inset-0 pointer-events-none">
               <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-transparent to-purple-500/10" />
