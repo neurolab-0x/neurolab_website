@@ -1,14 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import RegisterForm from '../components/RegisterForm';
 
 const Register: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#030329] relative overflow-hidden">
-      <Header />
-
       {/* Background elements */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
@@ -30,11 +26,8 @@ const Register: React.FC = () => {
             Register with your whitelisted email to create an admin account
           </p>
         </motion.div>
-
         <RegisterForm />
       </div>
-
-      <Footer />
     </div>
   );
 };

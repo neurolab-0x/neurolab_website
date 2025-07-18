@@ -23,12 +23,12 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {
         return {
           '@context': 'https://schema.org',
           '@type': 'Organization',
-          name: data?.name || 'NeuroLab',
-          url: data?.url || 'https://neurolab.com',
-          logo: data?.logo || 'https://neurolab.com/logo.png',
+          name: data?.name || 'Neurolab',
+          url: data?.url || 'https://neurolab.cc',
+          logo: data?.logo || 'https://neurolab.cc/logo.png',
           sameAs: data?.sameAs || [
             'https://twitter.com/neurolab',
-            'https://linkedin.com/company/neurolab',
+            'https://linkedin.com/company/neurolab-cc',
             'https://facebook.com/neurolab'
           ]
         };
@@ -37,11 +37,11 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {
         return {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          name: 'NeuroLab',
-          url: 'https://neurolab.com',
+          name: 'Neurolab',
+          url: 'https://neurolab.cc',
           potentialAction: {
             '@type': 'SearchAction',
-            target: 'https://neurolab.com/search?q={search_term_string}',
+            target: 'https://neurolab.cc/search?q={search_term_string}',
             'query-input': 'required name=search_term_string'
           }
         };
@@ -50,9 +50,9 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {
         return {
           '@context': 'https://schema.org',
           '@type': 'WebPage',
-          name: 'NeuroLab - Innovative Solutions',
-          description: 'NeuroLab provides cutting-edge solutions in neuroscience and technology.',
-          url: 'https://neurolab.com',
+          name: 'Neurolab - Innovative Solutions',
+          description: 'Neurolab provides cutting-edge solutions in neuroscience and technology.',
+          url: 'https://neurolab.cc',
           inLanguage: i18n.language
         };
 

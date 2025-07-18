@@ -2,7 +2,6 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
-import Footer from '../components/Footer';
 import { products, Product } from '../data/products';
 
 const ProductDetail: React.FC = () => {
@@ -31,7 +30,6 @@ const ProductDetail: React.FC = () => {
             </button>
           </div>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -143,7 +141,6 @@ const ProductDetail: React.FC = () => {
           </motion.div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

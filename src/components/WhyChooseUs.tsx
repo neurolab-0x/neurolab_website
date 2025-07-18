@@ -13,7 +13,7 @@ export default function WhyUs() {
         },
         {
             number: "50ms",
-            text: "Processing Speed",
+            text: "Average Processing Speed",
             icon: <FaBolt size={32} />,
             description: "Near real-time processing of complex EEG data"
         },

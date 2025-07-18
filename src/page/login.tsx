@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import api from '../config/api';
 import { AlertCircle, Mail, Lock } from 'lucide-react';
 
@@ -45,8 +44,6 @@ const LoginPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-[#030329] relative overflow-hidden">
-      <Header />
-
       {/* Background elements */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
@@ -146,8 +143,6 @@ const LoginPage: React.FC = () => {
           </div>
         </motion.div>
       </div>
-
-      <Footer />
     </div>
   );
 };

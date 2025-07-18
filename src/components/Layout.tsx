@@ -17,7 +17,6 @@ export function Layout({ children }: LayoutProps) {
       <SkipLink />
       <StructuredData type="Organization" />
       <div className="min-h-screen flex flex-col">
-        <Header />
         <main id="main-content" className="flex-grow">
           {children || <Outlet />}
         </main>

@@ -8,7 +8,7 @@ const TestimonialsSection = () => {
       role: "Neurologist",
       company: "King Faisal Hospital",
       image: "/team/sarah.jpg",
-      review: "NeuroLab's EEG analysis platform has revolutionized our diagnostic process. The AI-powered insights have significantly improved our accuracy and efficiency in detecting neurological conditions.",
+      review: "Neurolab's EEG analysis platform has revolutionized our diagnostic process. The AI-powered insights have significantly improved our accuracy and efficiency in detecting neurological conditions.",
       rating: 5
     },
     {
@@ -75,7 +75,7 @@ const TestimonialsSection = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-white mb-4">What Our Clients Say</h2>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Hear from medical professionals who have experienced the transformative power of NeuroLab's technology.
+              Hear from medical professionals who have experienced the transformative power of Neurolab's technology.
             </p>
           </div>
         </FadeInSection>
