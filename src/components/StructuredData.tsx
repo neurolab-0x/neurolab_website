@@ -51,7 +51,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({ type, data }) => {
           '@context': 'https://schema.org',
           '@type': 'WebPage',
           name: 'Neurolab - Innovative Solutions',
-          description: 'Neurolab provides cutting-edge solutions in neuroscience and technology.',
+          description: 'Neurolab provides cutting-edge solutions in EEG data processing.',
           url: 'https://neurolab.cc',
           inLanguage: i18n.language
         };
