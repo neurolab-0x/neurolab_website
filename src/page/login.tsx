@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import Header from "../components/Header";
 import api from '../config/api';
 import { AlertCircle, Mail, Lock } from 'lucide-react';
 
