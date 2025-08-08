@@ -20,7 +20,7 @@ const Header: React.FC = () => {
 
       // Only update active section if we're on the home page
       if (location.pathname === '/') {
-        const sections = ["home", "services", "projects", "team", "testimonials", "faq", "contact"];
+        const sections = ["home", "services", "projects", "testimonials", "faq", "contact"];
         const scrollPosition = window.scrollY + 100;
 
         for (const section of sections) {
@@ -73,7 +73,6 @@ const Header: React.FC = () => {
     { name: t('common.home'), path: "/", section: "home" },
     { name: t('common.services'), path: "/#services", section: "services" },
     { name: t('common.products'), path: "/#projects", section: "projects" },
-    { name: t('common.team'), path: "/#team", section: "team" },
     { name: t('common.testimonials'), path: "/#testimonials", section: "testimonials" },
     { name: t('common.faq'), path: "/#faq", section: "faq" },
     { name: t('common.contact'), path: "/#contact", section: "contact" },

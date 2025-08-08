@@ -5,7 +5,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import FadeInSection from './FadeInSection';
 import { products } from '../data/products';
 
-const ProjectsSection: React.FC = () => {
+const ProductsSection: React.FC = () => {
   const navigate = useNavigate();
   // Get the first 6 products to showcase
   const featuredProducts = products.slice(0, 6);
@@ -121,4 +121,4 @@ const ProjectsSection: React.FC = () => {
   );
 };
 
-export default ProjectsSection; 
+export default ProductsSection; 

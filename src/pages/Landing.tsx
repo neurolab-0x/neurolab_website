@@ -1,11 +1,10 @@
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import ServicesSection from "../components/ServicesSection";
-import ProjectsSection from "../components/ProjectsSection";
-import TeamSection from "../components/TeamSection";
+import ProjectsSection from "../components/ProductsSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import FAQSection from "../components/FAQSection";
-import Contact from "../components/contact";
+import Contact from "../components/Contact.jsx";
 import FadeInSection from "../components/FadeInSection";
 import PartnerSection from "../components/PartnerSection";
 
@@ -34,12 +33,12 @@ const LandingPage: React.FC = () => {
         </div>
       </FadeInSection>
 
-      {/* Team Section */}
+      {/* Team Section
       <FadeInSection>
         <div id="team">
           <TeamSection />
         </div>
-      </FadeInSection>
+      </FadeInSection> */}
 
       {/* Testimonials Section */}
       <FadeInSection>

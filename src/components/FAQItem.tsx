@@ -38,7 +38,7 @@ const FaqCard = ({ description, icon, explanation }: FaqCardProps) => {
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6">
+            <div className="px-6 pb-6 py-5">
               <p className="text-gray-300 leading-relaxed">{explanation}</p>
             </div>
           </motion.div>
