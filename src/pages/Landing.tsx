@@ -4,7 +4,7 @@ import ServicesSection from "../components/ServicesSection";
 import ProjectsSection from "../components/ProductsSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import FAQSection from "../components/FAQSection";
-import Contact from "../components/Contact.jsx";
+import Contact from "../components/Contact";
 import FadeInSection from "../components/FadeInSection";
 import PartnerSection from "../components/PartnerSection";
 
