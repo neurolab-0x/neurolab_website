@@ -4,9 +4,10 @@ import ServicesSection from "../components/ServicesSection";
 import ProjectsSection from "../components/ProductsSection";
 import TestimonialsSection from "../components/TestimonialsSection";
 import FAQSection from "../components/FAQSection";
-import Contact from "../components/Contact";
+import Contact from "../components/Contact.tsx";
 import FadeInSection from "../components/FadeInSection";
 import PartnerSection from "../components/PartnerSection";
+import TeamSection from "../components/TeamSection";
 
 const LandingPage: React.FC = () => {
   return (
@@ -33,12 +34,11 @@ const LandingPage: React.FC = () => {
         </div>
       </FadeInSection>
 
-      {/* Team Section
       <FadeInSection>
         <div id="team">
           <TeamSection />
         </div>
-      </FadeInSection> */}
+      </FadeInSection>
 
       {/* Testimonials Section */}
       <FadeInSection>
