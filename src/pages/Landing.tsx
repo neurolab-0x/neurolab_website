@@ -7,7 +7,7 @@ import FAQSection from "../components/FAQSection";
 import FadeInSection from "../components/FadeInSection";
 import PartnerSection from "../components/PartnerSection";
 import TeamSection from "../components/TeamSection";
-import Contact from "../components/Contact";
+import ContactSection from "../components/ContactSection";
 
 const LandingPage: React.FC = () => {
   return (
@@ -64,7 +64,7 @@ const LandingPage: React.FC = () => {
       {/* Contact Section */}
       <FadeInSection>
         <div id="contact">
-          <Contact />
+          <ContactSection />
         </div>
       </FadeInSection>
     </div>

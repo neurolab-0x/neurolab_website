@@ -18,7 +18,7 @@ interface FormErrors {
   message?: string;
 }
 
-const Contact: React.FC = () => {
+const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -323,4 +323,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact;
+export default ContactSection;
