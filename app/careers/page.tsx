@@ -33,15 +33,15 @@ import {
 } from "lucide-react"
 
 const openPositions = [
-  // {
-  //   id: "ml-engineer",
-  //   title: "Senior Machine Learning Engineer",
-  //   department: "AI & Research",
-  //   location: "Kigali, Rwanda",
-  //   type: "Full-time",
-  //   description: "Lead the development of our AI algorithms for EEG signal processing and pattern recognition.",
-  //   tags: ["Python", "TensorFlow", "Signal Processing", "ML"],
-  // },
+  {
+    id: "Software-Engineer-Intern",
+    title: "Software Engineer Intern",
+    department: "Platform",
+    location: "Kigali, Rwanda",
+    type: "Internship",
+    description: "Work alongside our engineering team to develop and enhance our cloud platform for neural data analysis.",
+    tags: ["Frontend Development", "Backend Development", "Ui & Ux", "ML"],
+  },
   // {
   //   id: "embedded-engineer",
   //   title: "Embedded Systems Engineer",

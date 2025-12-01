@@ -21,7 +21,7 @@ const teamMembers = [
   {
     name: "Dushimire Aine",
     role: "Co-Founder & Software Lead",
-    image: "/placeholder.svg?key=bv2ek",
+    image: "/aine.png?key=bv2ek",
     bio: "Software developer focused on scalable AI platforms.",
   },
   {
@@ -315,7 +315,7 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="aspect-video overflow-hidden rounded-2xl bg-secondary">
                   <img
-                    src="/placeholder.svg?key=2ioib"
+                    src="/africa.jpg"
                     alt="Kigali innovation hub"
                     className="h-full w-full object-cover"
                   />
