@@ -212,7 +212,7 @@ export function TestimonialsSection() {
         {/* Stats Bar */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 p-8 bg-secondary/50 rounded-2xl">
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary">500+</div>
+            <div className="text-3xl md:text-4xl font-bold text-primary">5+</div>
             <div className="text-sm text-muted-foreground mt-1">Happy Customers</div>
           </div>
           <div className="text-center">
@@ -220,7 +220,7 @@ export function TestimonialsSection() {
             <div className="text-sm text-muted-foreground mt-1">Average Rating</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-primary">15+</div>
+            <div className="text-3xl md:text-4xl font-bold text-primary">1+</div>
             <div className="text-sm text-muted-foreground mt-1">Countries</div>
           </div>
           <div className="text-center">

@@ -18,7 +18,7 @@ export function AboutSection() {
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-primary text-primary-foreground p-6 rounded-xl max-w-[200px]">
-              <p className="text-3xl font-bold">100+</p>
+              <p className="text-3xl font-bold">1+</p>
               <p className="text-sm opacity-90">Research Partners Worldwide</p>
             </div>
           </div>

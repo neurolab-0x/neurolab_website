@@ -1,3 +1,5 @@
+import { log } from "console"
+
 const partners = [
   {
     name: "Rwanda Coding Academy",
@@ -24,7 +26,11 @@ const partners = [
     name: "Neuralink",
     logo: "/neuralink.png",
     description: "Pioneering brain-machine interfaces",
-  },
+  },{
+    name: "Deus Clinic Rwanda",
+    logo:"/deus.png",
+  description: "Advanced healthcare solutions provider for mental health",
+  }
 ]
 
 export function PartnersSection() {

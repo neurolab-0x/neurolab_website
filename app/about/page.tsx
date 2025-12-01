@@ -42,6 +42,24 @@ const teamMembers = [
     image: "/placeholder.svg?key=s0w1f",
     bio: "Backend engineer specializing in cloud infrastructure and APIs.",
   },
+  {
+    name: "Dr. Alain Sayinzoga",
+    role: "Lead Neurologist",
+    image: "/placeholder.svg?key=s0w1f",
+    bio: "Neurologist with expertise in brain-computer interfaces and clinical applications.",
+  },
+  {
+    name: "Pyschologist Muhire",
+    role: "Psychology Consultant",
+    image: "/placeholder.svg?key=s0w1f",
+    bio: "Psychologist focused on cognitive neuroscience and user experience.",
+  },
+  {
+    name: "Dr. Awet Fesseha",
+    role: "Mentor & Advisor",
+    image: "/placeholder.svg?key=s0w1f",
+    bio: "Experienced machine learning enthuasist and entrepreneur guiding our research direction.",
+  },
 
 ]
 
@@ -51,6 +69,7 @@ const partners = [
   { name: "Benax Technologies", logo: "/benax.png" },
   { name: "Aphezis Technologies", logo: "/aphezis.png" },
   { name: "Neuralink", logo: "/neuralink.png" },
+  {name:"Deus Clinic Rwanda", logo:"/deus.png" }
 ]
 
 const milestones = [
@@ -70,6 +89,7 @@ const milestones = [
     title: "Launch of Preorder Waitlist",
     description: "Opened preorder waitlist for our first EEG BCI product targeting researchers and developers.",
   },
+   
   
 ]
 
