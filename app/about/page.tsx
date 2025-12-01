@@ -36,6 +36,12 @@ const teamMembers = [
     image: "/placeholder.svg?key=s0w1f",
     bio: "Sales leader dedicated to expanding market reach.",
   },
+  {
+    name: "Tuyishimire Christian",
+    role: "Lead Backend Engineer",
+    image: "/placeholder.svg?key=s0w1f",
+    bio: "Backend engineer specializing in cloud infrastructure and APIs.",
+  },
 
 ]
 
