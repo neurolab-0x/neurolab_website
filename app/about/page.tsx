@@ -27,7 +27,7 @@ const teamMembers = [
   {
     name: "Uhirwe Esther Hope",
     role: "Head of Marketing",
-    image: "/placeholder.svg?key=jg0yd",
+    image: "/esther.jpg?key=jg0yd",
     bio: "Marketing strategist with a passion for tech innovation.",
   },
   {
