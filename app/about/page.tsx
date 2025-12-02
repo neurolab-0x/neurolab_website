@@ -9,19 +9,19 @@ const teamMembers = [
   {
     name: "Asimwe Landry",
     role: "Founder & CEO",
-    image: "/placeholder.svg?key=1r55x",
+    image: "/tush.jpeg?key=1r55x",
     bio: "Software engineer passionate about brain-computer interfaces.",
   },
   {
     name: "Mugisha Prosper",
     role: "Co-Founder & AI Lead",
-    image: "/placeholder.svg?key=zidmc",
+    image: "/polo.jpeg?key=zidmc",
     bio: "AI researcher specializing in signal processing and machine learning.",
   },
   {
     name: "Dushimire Aine",
     role: "Co-Founder & Software Lead",
-    image: "/aine.png?key=bv2ek",
+    image: "/tush.jpeg?key=bv2ek",
     bio: "Software developer focused on scalable AI platforms.",
   },
   {
@@ -33,31 +33,31 @@ const teamMembers = [
   {
     name: "Atumanyire Winny",
     role: "Head of Sales",
-    image: "/placeholder.svg?key=s0w1f",
+    image: "/winny.jpg?key=s0w1f",
     bio: "Sales leader dedicated to expanding market reach.",
   },
   {
     name: "Tuyishimire Christian",
     role: "Lead Backend Engineer",
-    image: "/placeholder.svg?key=s0w1f",
+    image: "/tush.jpeg?key=s0w1f",
     bio: "Backend engineer specializing in cloud infrastructure and APIs.",
   },
   {
     name: "Dr. Alain Sayinzoga",
     role: "Lead Neurologist",
-    image: "/placeholder.svg?key=s0w1f",
+    image: "/alain.jpg?key=s0w1f",
     bio: "Neurologist with expertise in brain-computer interfaces and clinical applications.",
   },
   {
-    name: "Pyschologist Muhire",
+    name: "Muhire Jean Claude",
     role: "Psychology Consultant",
-    image: "/placeholder.svg?key=s0w1f",
+    image: "/muhire.jpg?key=s0w1f",
     bio: "Psychologist focused on cognitive neuroscience and user experience.",
   },
   {
     name: "Dr. Awet Fesseha",
     role: "Mentor & Advisor",
-    image: "/placeholder.svg?key=s0w1f",
+    image: "/awet.jpg?key=s0w1f",
     bio: "Experienced machine learning enthuasist and entrepreneur guiding our research direction.",
   },
 
@@ -69,11 +69,11 @@ const partners = [
   { name: "Benax Technologies", logo: "/benax.png" },
   { name: "Aphezis Technologies", logo: "/aphezis.png" },
   { name: "Neuralink", logo: "/neuralink.png" },
-  {name:"Deus Clinic Rwanda", logo:"/deus.png" }
+  { name: "Deus Clinic Rwanda", logo: "/deus.png" }
 ]
 
 const milestones = [
- 
+
   {
     year: "2024",
     title: "Company Launch",
@@ -89,8 +89,8 @@ const milestones = [
     title: "Launch of Preorder Waitlist",
     description: "Opened preorder waitlist for our first EEG BCI product targeting researchers and developers.",
   },
-   
-  
+
+
 ]
 
 export default function AboutPage() {
@@ -257,17 +257,19 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {teamMembers.map((member) => (
-                <Card key={member.name} className="overflow-hidden border-border bg-card">
-                    <img
-                      src={member.image || "/placeholder.svg"}
-                      alt={member.name}
-                      className="h-[250px] w-full object-cover"
-                    />
-                  <CardContent className="p-6 text-center">
-                    <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
-                    <p className="text-sm font-medium text-primary">{member.role}</p>
-                    <p className="mt-3 text-sm text-muted-foreground">{member.bio}</p>
-                  </CardContent>
+                <Card key={member.name} className="overflow-hidden border-border bg-card ">
+                    <div className="relative h-[260px] w-full overflow-hidden bg-secondary">
+                      <img
+                        src={member.image || "/placeholder.svg"}
+                        alt={member.name}
+                        className="absolute inset-0 h-full w-full object-cover object-[center_18%]"
+                      />
+                    </div>
+                    <CardContent className="p-6 text-center">
+                      <h3 className="text-lg font-semibold text-foreground">{member.name}</h3>
+                      <p className="text-sm font-medium text-primary">{member.role}</p>
+                      <p className="mt-3 text-sm text-muted-foreground">{member.bio}</p>
+                    </CardContent>
                 </Card>
               ))}
             </div>
