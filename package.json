@@ -10,7 +10,8 @@
     "start": "next start",
     "test": "jest --watch",
     "test:ci": "jest --ci --coverage",
-    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "build:dist": "pnpm build && node ./scripts/make-dist.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
