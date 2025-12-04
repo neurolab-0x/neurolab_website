@@ -9,8 +9,14 @@ const teamMembers = [
   {
     name: "Asimwe Landry",
     role: "Founder & CEO",
-    image: "/tush.jpeg?key=1r55x",
+    image: "/landry.png?key=1r55x",
     bio: "Software engineer passionate about brain-computer interfaces.",
+  },
+  {
+    name: "Dushimire Aine",
+    role: "Co-Founder & Software Lead",
+    image: "/aine.png?key=bv2ek",
+    bio: "Software developer focused on scalable AI platforms.",
   },
   {
     name: "Mugisha Prosper",
@@ -18,12 +24,7 @@ const teamMembers = [
     image: "/polo.jpeg?key=zidmc",
     bio: "AI researcher specializing in signal processing and machine learning.",
   },
-  {
-    name: "Dushimire Aine",
-    role: "Co-Founder & Software Lead",
-    image: "/tush.jpeg?key=bv2ek",
-    bio: "Software developer focused on scalable AI platforms.",
-  },
+  
   {
     name: "Uhirwe Esther Hope",
     role: "Head of Marketing",
