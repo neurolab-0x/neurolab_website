@@ -11,7 +11,7 @@ const navSections = [
     title: 'Product',
     links: [
       { label: 'Technology', to: '/#technology' },
-      { label: 'Research', to: '/#research' },
+      { label: 'Research', to: '/blog?category=Research' },
       { label: 'Shop', to: '/shop' },
       { label: 'NeurAI Platform', to: '/ai-platform' },
     ],
@@ -63,7 +63,7 @@ const OverlayNav = () => {
       setTimeout(() => {
         setOpen(false);
         setExiting(false);
-        if (to.startsWith('/#')) {
+        if (to.startsWith('/#') && to !== '/#') {
           navigate('/');
           setTimeout(() => {
             const id = to.replace('/#', '');

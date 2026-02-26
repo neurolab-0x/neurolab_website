@@ -11,7 +11,7 @@ const Navbar = () => {
         <div className="flex items-center gap-8">
           {[
             { label: 'Technology', href: '/#technology' },
-            { label: 'Research', href: '/#research' },
+            { label: 'Research', href: '/blog?category=Research' },
             { label: 'Product', href: '/' },
           ].map((item) => (
             <a
