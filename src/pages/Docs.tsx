@@ -229,9 +229,9 @@ const Docs = () => {
         : docSections;
 
     return (
-        <div className="min-h-screen bg-background">
+        <div className="flex h-screen flex-col overflow-hidden bg-background">
             <Navbar />
-            <div className="flex h-[calc(100vh-48px)] pt-12">
+            <div className="flex flex-1 overflow-hidden pt-12">
                 {/* ── SIDEBAR ── */}
                 {/* Mobile toggle */}
                 <button
@@ -244,7 +244,7 @@ const Docs = () => {
 
                 {/* Sidebar panel */}
                 <aside
-                    className={`fixed left-0 top-12 z-30 h-[calc(100vh-48px)] w-72 flex-shrink-0 overflow-y-auto bg-background transition-transform duration-500 lg:sticky lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+                    className={`fixed left-0 top-12 z-30 h-full w-72 flex-shrink-0 overflow-y-auto bg-background transition-transform duration-500 lg:static lg:block lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
                         }`}
                     style={{
                         borderRight: '0.5px solid hsl(213 27% 84%)',

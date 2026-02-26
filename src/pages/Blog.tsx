@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -118,9 +118,23 @@ const BlogCard = ({ post, featured = false }: { post: BlogPost; featured?: boole
 
 /* ── Main Blog Page ── */
 const Blog = () => {
-    const [activeCategory, setActiveCategory] = useState<string>('All');
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // Initialize activeCategory from URL if present and valid
+    const getInitialCategory = () => {
+        const params = new URLSearchParams(location.search);
+        const urlCat = params.get('category');
+        return urlCat && categories.includes(urlCat as any) ? urlCat : 'All';
+    };
+
+    const [activeCategory, setActiveCategory] = useState<string>(getInitialCategory());
     const { ref: heroRef, isVisible: heroVis } = useScrollReveal(0.1);
     const { ref: gridRef, isVisible: gridVis } = useScrollReveal(0.1);
+
+    useEffect(() => {
+        setActiveCategory(getInitialCategory());
+    }, [location.search]);
 
     const filtered =
         activeCategory === 'All'
@@ -174,7 +188,14 @@ const Blog = () => {
                         {categories.map((cat) => (
                             <button
                                 key={cat}
-                                onClick={() => setActiveCategory(cat)}
+                                onClick={() => {
+                                    setActiveCategory(cat);
+                                    if (cat === 'All') {
+                                        navigate('/blog');
+                                    } else {
+                                        navigate(`/blog?category=${cat}`);
+                                    }
+                                }}
                                 className="rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-300"
                                 style={{
                                     background:
