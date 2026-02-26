@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroHalo from '@/components/HeroHalo';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { Sparkles, Check, ChevronDown, ArrowRight, ShieldCheck, Database, HardDrive, Cpu, Layers } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface CommissionConfig {
   edition: 'clinical' | 'enterprise' | null;
@@ -11,25 +12,32 @@ interface CommissionConfig {
 }
 
 const editions = [
-  { id: 'clinical' as const, title: 'Clinical Edition', desc: 'FDA-pathway compliant. Designed for clinical environments with certified safety protocols.' },
-  { id: 'enterprise' as const, title: 'Enterprise Edition', desc: 'Full-scale deployment for institutions. High-throughput data and multi-user access.' },
+  { id: 'clinical' as const, title: 'Clinical Edition', price: 12500, desc: 'FDA-pathway compliant. Designed for clinical environments with certified safety protocols.', icon: ShieldCheck },
+  { id: 'enterprise' as const, title: 'Enterprise Edition', price: 28000, desc: 'Full-scale deployment for institutions. High-throughput data and multi-user access.', icon: Layers },
 ];
 
 const sensorOptions = [
-  { value: 128 as const, label: '128 Channels', desc: 'Standard density. Ideal for targeted cortical mapping.' },
-  { value: 256 as const, label: '256 Channels', desc: 'High density. Full-hemisphere coverage with sub-millimeter precision.' },
-  { value: 512 as const, label: '512 Channels', desc: 'Ultra density. Whole-brain capture for advanced research protocols.' },
+  { value: 128 as const, label: '128 Channels', priceOffset: 0, desc: 'Standard density. Ideal for targeted cortical mapping.', icon: Cpu },
+  { value: 256 as const, label: '256 Channels', priceOffset: 4500, desc: 'High density. Full-hemisphere coverage with sub-millimeter precision.', icon: Cpu },
+  { value: 512 as const, label: '512 Channels', priceOffset: 12000, desc: 'Ultra density. Whole-brain capture for advanced research protocols.', icon: Cpu },
 ];
 
 const storageOptions = [
-  { id: 'local-only' as const, title: 'Local-Only', desc: 'Air-gapped operation. All processing and storage remains on-premises.' },
-  { id: 'cloud-sync' as const, title: 'Cloud-Sync', desc: 'Real-time data streaming to Neurolab Cloud with automated analysis pipelines.' },
+  { id: 'local-only' as const, title: 'Local-Only', priceOffset: 0, desc: 'Air-gapped operation. All processing and storage remains on-premises.', icon: HardDrive },
+  { id: 'cloud-sync' as const, title: 'Cloud-Sync (1 Year)', priceOffset: 1200, desc: 'Real-time data streaming to Neurolab Cloud with automated analysis pipelines.', icon: Database },
 ];
 
-const steps = ['Edition', 'Sensors', 'Storage'] as const;
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  }).format(price);
+};
+
+const easing = [0.16, 1, 0.3, 1]; // Apple-like custom easing
 
 const Shop = () => {
-  const [phase, setPhase] = useState(1);
   const [config, setConfig] = useState<CommissionConfig>({
     edition: null,
     channels: null,
@@ -37,182 +45,346 @@ const Shop = () => {
   });
   const [showForm, setShowForm] = useState(false);
 
-  const canAdvance =
-    (phase === 1 && config.edition) ||
-    (phase === 2 && config.channels) ||
-    (phase === 3 && config.storage);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Directive F: All 3 keys must be non-null before commissioning
+  // Calculate total price dynamically
+  const basePrice = config.edition ? editions.find(e => e.id === config.edition)?.price || 0 : 0;
+  const channelPrice = config.channels ? sensorOptions.find(o => o.value === config.channels)?.priceOffset || 0 : 0;
+  const storagePrice = config.storage ? storageOptions.find(o => o.id === config.storage)?.priceOffset || 0 : 0;
+  const totalPrice = basePrice + channelPrice + storagePrice;
+
   const isConfigComplete = config.edition !== null && config.channels !== null && config.storage !== null;
 
+  // Auto-scroll when new section is unlocked
+  useEffect(() => {
+    if (config.edition && !config.channels) {
+      document.getElementById('section-channels')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (config.channels && !config.storage) {
+      document.getElementById('section-storage')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (isConfigComplete && !showForm) {
+      document.getElementById('section-summary')?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, [config.edition, config.channels, config.storage, isConfigComplete, showForm]);
+
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground" style={{ WebkitFontSmoothing: 'antialiased' }}>
       <Navbar />
-      <main className="pt-12">
-        <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 lg:grid-cols-2">
-          {/* LEFT — Product Hero + Halo */}
-          <div className="relative flex items-center justify-center px-6 py-32 lg:sticky lg:top-0 lg:h-screen">
+      <main className="pt-12 relative">
+        <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 lg:grid-cols-2 relative pb-32">
+
+          {/* LEFT — Product Hero + Halo (Sticky) */}
+          <div className="relative flex items-center justify-center px-6 py-20 lg:py-32 lg:sticky lg:top-0 lg:h-screen pointer-events-none lg:pointer-events-auto">
             <HeroHalo />
-            <div className="relative z-10 flex flex-col items-center gap-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: easing }}
+              className="relative z-10 flex flex-col items-center gap-6 w-full"
+            >
               <div
-                className="aspect-[4/3] w-full max-w-lg rounded-3xl bg-card"
-                style={{ boxShadow: 'inset 0 2px 20px 0 hsl(var(--foreground) / 0.06), 0 0 0 0.5px hsl(var(--surface-border))' }}
-              />
-              <h1 className="text-4xl font-bold tracking-display text-foreground sm:text-5xl">
-                Neurolab Nexus
-              </h1>
-              <p className="text-sm text-muted-foreground tabular-nums">Commission Your Device</p>
-            </div>
-          </div>
+                className="relative aspect-[4/3] w-full max-w-lg rounded-3xl bg-secondary overflow-hidden transition-all duration-700"
+                style={{
+                  boxShadow: config.channels ? 'inset 0 2px 20px 0 hsl(var(--primary) / 0.1), 0 0 0 0.5px hsl(var(--primary) / 0.3), 0 20px 40px -20px hsl(var(--primary) / 0.15)' : 'inset 0 2px 20px 0 hsl(var(--foreground) / 0.04), 0 0 0 0.5px hsl(var(--surface-border))',
+                }}
+              >
+                {/* Mock Product Visuals based on config */}
+                <div className="absolute inset-0 bg-gradient-to-br from-card to-background opacity-50" />
 
-          {/* RIGHT — Multi-step Configurator */}
-          <div className="flex flex-col justify-center px-6 py-32 lg:px-16">
-            {/* Step indicator */}
-            <div className="mb-12 flex items-center gap-6">
-              {steps.map((label, i) => {
-                const stepNum = i + 1;
-                const isActive = stepNum === phase;
-                const isComplete = stepNum < phase;
-                return (
-                  <div key={label} className="flex items-center gap-3">
-                    <div
-                      className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-medium transition-all duration-500"
-                      style={{
-                        background: isActive || isComplete ? 'hsl(var(--foreground))' : 'hsl(var(--secondary))',
-                        color: isActive || isComplete ? 'hsl(var(--background))' : 'hsl(var(--muted-foreground))',
-                        border: '0.5px solid hsl(var(--surface-border))',
-                        transitionTimingFunction: 'var(--ease-apple)',
-                      }}
-                    >
-                      {stepNum}
+                {config.channels && (
+                  <motion.div
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                    className="absolute inset-0 flex items-center justify-center p-8"
+                  >
+                    <div className="relative w-full h-full border border-primary/20 rounded-full flex items-center justify-center animate-[spin_60s_linear_infinite]">
+                      <div className="absolute w-3/4 h-3/4 border border-primary/30 rounded-full animate-[spin_40s_linear_infinite_reverse]" />
+                      <div className="absolute w-1/2 h-1/2 border border-primary/40 rounded-full animate-[spin_20s_linear_infinite]" />
+                      <Sparkles className="text-primary/40 h-12 w-12" />
                     </div>
-                    <span className="text-sm font-medium text-muted-foreground">{label}</span>
+                  </motion.div>
+                )}
+
+                <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-1">N1 Implant</p>
+                    <p className="text-lg font-semibold tracking-tight">Nexus Series</p>
                   </div>
-                );
-              })}
-            </div>
-
-            {/* Phase 1: Edition */}
-            {phase === 1 && (
-              <div className="space-y-4">
-                <h2 className="mb-6 text-xl font-semibold text-foreground">Select Edition</h2>
-                {editions.map((e) => (
-                  <button
-                    key={e.id}
-                    onClick={() => setConfig({ ...config, edition: e.id })}
-                    className="w-full rounded-3xl p-6 text-left transition-all duration-500 active:scale-[0.98]"
-                    style={{
-                      border: config.edition === e.id ? '1px solid hsl(var(--foreground))' : '0.5px solid hsl(var(--surface-border))',
-                      background: config.edition === e.id ? 'hsl(var(--secondary))' : 'hsl(var(--card))',
-                      transitionTimingFunction: 'var(--ease-apple)',
-                    }}
-                  >
-                    <span className="text-base font-semibold text-foreground">{e.title}</span>
-                    <p className="mt-1 text-sm text-muted-foreground">{e.desc}</p>
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* Phase 2: Sensors */}
-            {phase === 2 && (
-              <div className="space-y-4">
-                <h2 className="mb-6 text-xl font-semibold text-foreground">Sensor Density</h2>
-                {sensorOptions.map((d) => (
-                  <button
-                    key={d.value}
-                    onClick={() => setConfig({ ...config, channels: d.value })}
-                    className="w-full rounded-3xl p-6 text-left transition-all duration-500 active:scale-[0.98]"
-                    style={{
-                      border: config.channels === d.value ? '1px solid hsl(var(--foreground))' : '0.5px solid hsl(var(--surface-border))',
-                      background: config.channels === d.value ? 'hsl(var(--secondary))' : 'hsl(var(--card))',
-                      transitionTimingFunction: 'var(--ease-apple)',
-                    }}
-                  >
-                    <span className="text-base font-semibold tabular-nums text-foreground">{d.label}</span>
-                    <p className="mt-1 text-sm text-muted-foreground">{d.desc}</p>
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* Phase 3: Storage */}
-            {phase === 3 && !showForm && (
-              <div className="space-y-4">
-                <h2 className="mb-6 text-xl font-semibold text-foreground">Storage Configuration</h2>
-                {storageOptions.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => setConfig({ ...config, storage: s.id })}
-                    className="w-full rounded-3xl p-6 text-left transition-all duration-500 active:scale-[0.98]"
-                    style={{
-                      border: config.storage === s.id ? '1px solid hsl(var(--foreground))' : '0.5px solid hsl(var(--surface-border))',
-                      background: config.storage === s.id ? 'hsl(var(--secondary))' : 'hsl(var(--card))',
-                      transitionTimingFunction: 'var(--ease-apple)',
-                    }}
-                  >
-                    <span className="text-base font-semibold text-foreground">{s.title}</span>
-                    <p className="mt-1 text-sm text-muted-foreground">{s.desc}</p>
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* Commission Form */}
-            {showForm && (
-              <div>
-                <h2 className="mb-6 text-xl font-semibold text-foreground">Request Commission</h2>
-                <div className="rounded-3xl bg-card p-8" style={{ border: '0.5px solid hsl(var(--surface-border))' }}>
-                  <div className="mb-6 rounded-2xl bg-secondary p-4 text-sm text-muted-foreground" style={{ border: '0.5px solid hsl(var(--surface-border))' }}>
-                    <p><span className="font-medium text-foreground">Edition:</span> {config.edition === 'clinical' ? 'Clinical' : 'Enterprise'}</p>
-                    <p><span className="font-medium text-foreground">Channels:</span> <span className="tabular-nums">{config.channels}</span></p>
-                    <p><span className="font-medium text-foreground">Storage:</span> {config.storage === 'local-only' ? 'Local-Only' : 'Cloud-Sync'}</p>
-                  </div>
-                  <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                    <input type="text" placeholder="Full Name" className="w-full rounded-2xl bg-secondary px-4 py-3 text-sm text-foreground outline-none placeholder:text-muted-foreground" style={{ border: '0.5px solid hsl(var(--surface-border))' }} />
-                    <input type="email" placeholder="Institutional Email" className="w-full rounded-2xl bg-secondary px-4 py-3 text-sm text-foreground outline-none placeholder:text-muted-foreground" style={{ border: '0.5px solid hsl(var(--surface-border))' }} />
-                    <textarea placeholder="Additional Requirements" rows={3} className="w-full resize-none rounded-2xl bg-secondary px-4 py-3 text-sm text-foreground outline-none placeholder:text-muted-foreground" style={{ border: '0.5px solid hsl(var(--surface-border))' }} />
-                    <button
-                      type="submit"
-                      className="inline-flex h-11 w-full items-center justify-center rounded-2xl text-sm font-medium text-white transition-transform duration-500 hover:-translate-y-0.5 active:scale-[0.98]"
-                      style={{ background: '#0060E9', transitionTimingFunction: 'var(--ease-apple)' }}
-                    >
-                      Request Commission
-                    </button>
-                  </form>
+                  {isConfigComplete && (
+                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-right">
+                      <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Calibrated</p>
+                      <div className="flex items-center gap-1 text-primary">
+                        <Check size={14} />
+                        <span className="text-sm font-medium">Ready</span>
+                      </div>
+                    </motion.div>
+                  )}
                 </div>
               </div>
-            )}
 
-            {/* Navigation controls */}
-            {!showForm && (
-              <div className="mt-12 flex items-center gap-4">
-                {phase > 1 && (
-                  <button
-                    onClick={() => setPhase(phase - 1)}
-                    className="inline-flex h-11 items-center gap-2 rounded-2xl px-6 text-sm font-medium text-foreground transition-all duration-500 hover:-translate-y-0.5 active:scale-[0.98]"
-                    style={{ border: '0.5px solid hsl(var(--surface-border))', transitionTimingFunction: 'var(--ease-apple)' }}
-                  >
-                    <ArrowLeft size={16} strokeWidth={1.5} /> Back
-                  </button>
-                )}
-                <button
-                  onClick={() => {
-                    if (phase < 3) setPhase(phase + 1);
-                    else if (isConfigComplete) setShowForm(true);
-                  }}
-                  disabled={phase < 3 ? !canAdvance : !isConfigComplete}
-                  className="inline-flex h-11 items-center gap-2 rounded-2xl px-8 text-sm font-medium text-white transition-all duration-500 hover:-translate-y-0.5 active:scale-[0.98] disabled:opacity-50 disabled:hover:translate-y-0"
-                  style={{ background: '#0060E9', transitionTimingFunction: 'var(--ease-apple)' }}
-                >
-                  {phase < 3 ? 'Continue' : 'Request Commission'} <ArrowRight size={16} strokeWidth={1.5} />
-                </button>
+              <div className="text-center">
+                <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl mb-3" style={{ letterSpacing: '-0.04em' }}>
+                  Configure Nexus.
+                </h1>
+                <p className="text-base text-muted-foreground">Select your precision tier.</p>
               </div>
-            )}
+            </motion.div>
+          </div>
+
+          {/* RIGHT — Unrolling Configurator */}
+          <div ref={containerRef} className="flex flex-col px-6 py-12 lg:py-32 lg:px-16 w-full max-w-xl mx-auto z-10 space-y-16">
+
+            {/* Step 1: Edition */}
+            <section id="section-edition" className="space-y-6 scroll-m-32">
+              <div className="flex items-end justify-between border-b border-border/50 pb-4">
+                <h2 className="text-2xl font-bold tracking-tight">1. Edition</h2>
+                {config.edition && <span className="text-sm font-medium text-foreground">{formatPrice(basePrice)}</span>}
+              </div>
+              <div className="grid gap-4">
+                {editions.map((e) => {
+                  const isSelected = config.edition === e.id;
+                  return (
+                    <motion.button
+                      key={e.id}
+                      whileHover={{ scale: 1.01 }}
+                      whileTap={{ scale: 0.99 }}
+                      onClick={() => {
+                        setConfig({ ...config, edition: e.id });
+                        if (isConfigComplete) setShowForm(false);
+                      }}
+                      className="group relative w-full overflow-hidden rounded-2xl p-6 text-left transition-all duration-300"
+                      style={{
+                        background: isSelected ? 'hsl(var(--card))' : 'hsl(var(--secondary) / 0.5)',
+                        border: isSelected ? '1px solid hsl(var(--primary))' : '1px solid hsl(var(--border) / 0.6)',
+                        boxShadow: isSelected ? '0 0 0 1px hsl(var(--primary)), 0 8px 24px -8px hsl(var(--primary) / 0.15)' : 'none',
+                      }}
+                    >
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          <div className={`p-2 rounded-lg ${isSelected ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                            <e.icon size={20} />
+                          </div>
+                          <div>
+                            <span className={`text-lg font-semibold tracking-tight block ${isSelected ? 'text-primary' : 'text-foreground'}`}>{e.title}</span>
+                            <span className="text-sm font-medium text-muted-foreground">{formatPrice(e.price)} base</span>
+                          </div>
+                        </div>
+                        {isSelected && (
+                          <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="h-6 w-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+                            <Check size={14} strokeWidth={2.5} />
+                          </motion.div>
+                        )}
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{e.desc}</p>
+                    </motion.button>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* Step 2: Sensors (Unrolls when Edition is selected) */}
+            <AnimatePresence>
+              {config.edition && (
+                <motion.section
+                  id="section-channels"
+                  initial={{ opacity: 0, height: 0, y: 20 }}
+                  animate={{ opacity: 1, height: 'auto', y: 0 }}
+                  transition={{ duration: 0.6, ease: easing }}
+                  className="space-y-6 scroll-m-32 overflow-hidden"
+                >
+                  <div className="flex items-end justify-between border-b border-border/50 pb-4">
+                    <h2 className="text-2xl font-bold tracking-tight">2. Sensor Density</h2>
+                    {config.channels && <span className="text-sm font-medium text-foreground">{channelPrice > 0 ? `+${formatPrice(channelPrice)}` : 'Included'}</span>}
+                  </div>
+                  <div className="grid gap-4">
+                    {sensorOptions.map((d) => {
+                      const isSelected = config.channels === d.value;
+                      return (
+                        <motion.button
+                          key={d.value}
+                          whileHover={{ scale: 1.01 }}
+                          whileTap={{ scale: 0.99 }}
+                          onClick={() => {
+                            setConfig({ ...config, channels: d.value });
+                            if (isConfigComplete) setShowForm(false);
+                          }}
+                          className="group relative w-full overflow-hidden rounded-2xl p-6 text-left transition-all duration-300"
+                          style={{
+                            background: isSelected ? 'hsl(var(--card))' : 'hsl(var(--secondary) / 0.5)',
+                            border: isSelected ? '1px solid hsl(var(--primary))' : '1px solid hsl(var(--border) / 0.6)',
+                            boxShadow: isSelected ? '0 0 0 1px hsl(var(--primary)), 0 8px 24px -8px hsl(var(--primary) / 0.15)' : 'none',
+                          }}
+                        >
+                          <div className="flex items-start justify-between mb-4">
+                            <div className="flex items-center gap-3">
+                              <div className={`p-2 rounded-lg ${isSelected ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                                <d.icon size={20} />
+                              </div>
+                              <div>
+                                <span className={`text-lg font-semibold tracking-tight block ${isSelected ? 'text-primary' : 'text-foreground'}`}>{d.label}</span>
+                                <span className="text-sm font-medium text-muted-foreground">{d.priceOffset > 0 ? `+ ${formatPrice(d.priceOffset)}` : 'Included'}</span>
+                              </div>
+                            </div>
+                            {isSelected && (
+                              <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="h-6 w-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+                                <Check size={14} strokeWidth={2.5} />
+                              </motion.div>
+                            )}
+                          </div>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{d.desc}</p>
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                </motion.section>
+              )}
+            </AnimatePresence>
+
+            {/* Step 3: Storage (Unrolls when Channels are selected) */}
+            <AnimatePresence>
+              {config.channels && (
+                <motion.section
+                  id="section-storage"
+                  initial={{ opacity: 0, height: 0, y: 20 }}
+                  animate={{ opacity: 1, height: 'auto', y: 0 }}
+                  transition={{ duration: 0.6, ease: easing }}
+                  className="space-y-6 scroll-m-32 overflow-hidden pb-12"
+                >
+                  <div className="flex items-end justify-between border-b border-border/50 pb-4">
+                    <h2 className="text-2xl font-bold tracking-tight">3. Storage & Analytics</h2>
+                    {config.storage && <span className="text-sm font-medium text-foreground">{storagePrice > 0 ? `+${formatPrice(storagePrice)}` : 'Included'}</span>}
+                  </div>
+                  <div className="grid gap-4">
+                    {storageOptions.map((s) => {
+                      const isSelected = config.storage === s.id;
+                      return (
+                        <motion.button
+                          key={s.id}
+                          whileHover={{ scale: 1.01 }}
+                          whileTap={{ scale: 0.99 }}
+                          onClick={() => {
+                            setConfig({ ...config, storage: s.id });
+                            if (isConfigComplete) setShowForm(false);
+                          }}
+                          className="group relative w-full overflow-hidden rounded-2xl p-6 text-left transition-all duration-300"
+                          style={{
+                            background: isSelected ? 'hsl(var(--card))' : 'hsl(var(--secondary) / 0.5)',
+                            border: isSelected ? '1px solid hsl(var(--primary))' : '1px solid hsl(var(--border) / 0.6)',
+                            boxShadow: isSelected ? '0 0 0 1px hsl(var(--primary)), 0 8px 24px -8px hsl(var(--primary) / 0.15)' : 'none',
+                          }}
+                        >
+                          <div className="flex items-start justify-between mb-4">
+                            <div className="flex items-center gap-3">
+                              <div className={`p-2 rounded-lg ${isSelected ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                                <s.icon size={20} />
+                              </div>
+                              <div>
+                                <span className={`text-lg font-semibold tracking-tight block ${isSelected ? 'text-primary' : 'text-foreground'}`}>{s.title}</span>
+                                <span className="text-sm font-medium text-muted-foreground">{s.priceOffset > 0 ? `+ ${formatPrice(s.priceOffset)} / yr` : 'Included'}</span>
+                              </div>
+                            </div>
+                            {isSelected && (
+                              <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="h-6 w-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+                                <Check size={14} strokeWidth={2.5} />
+                              </motion.div>
+                            )}
+                          </div>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                        </motion.button>
+                      );
+                    })}
+                  </div>
+                </motion.section>
+              )}
+            </AnimatePresence>
+
+            {/* Request Commission Details Form */}
+            <AnimatePresence>
+              {isConfigComplete && showForm && (
+                <motion.section
+                  initial={{ opacity: 0, height: 0, y: 20 }}
+                  animate={{ opacity: 1, height: 'auto', y: 0 }}
+                  exit={{ opacity: 0, height: 0, y: -20 }}
+                  transition={{ duration: 0.6, ease: easing }}
+                  className="space-y-6 pt-8 border-t border-border/50 overflow-hidden"
+                >
+                  <h2 className="text-2xl font-bold tracking-tight">Contact Information</h2>
+                  <p className="text-sm text-muted-foreground">Our deployment team will reach out to finalize compliance checks and installation dates.</p>
+
+                  <form className="space-y-5 mt-6" onSubmit={(e) => { e.preventDefault(); alert("Mock commission requested! Continuing development.") }}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="text-xs font-medium text-muted-foreground mb-1.5 block ml-1">First Name</label>
+                        <input type="text" className="w-full rounded-xl bg-secondary/50 border border-border/50 px-4 py-3.5 text-sm outline-none transition-colors focus:border-primary/50 focus:bg-card" required />
+                      </div>
+                      <div>
+                        <label className="text-xs font-medium text-muted-foreground mb-1.5 block ml-1">Last Name</label>
+                        <input type="text" className="w-full rounded-xl bg-secondary/50 border border-border/50 px-4 py-3.5 text-sm outline-none transition-colors focus:border-primary/50 focus:bg-card" required />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-muted-foreground mb-1.5 block ml-1">Institutional Email</label>
+                      <input type="email" placeholder="name@university.edu or name@hospital.org" className="w-full rounded-xl bg-secondary/50 border border-border/50 px-4 py-3.5 text-sm outline-none transition-colors focus:border-primary/50 focus:bg-card" required />
+                    </div>
+                    <div>
+                      <label className="text-xs font-medium text-muted-foreground mb-1.5 block ml-1">Additional Requirements</label>
+                      <textarea rows={3} className="w-full resize-none rounded-xl bg-secondary/50 border border-border/50 px-4 py-3.5 text-sm outline-none transition-colors focus:border-primary/50 focus:bg-card" />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full rounded-xl bg-foreground text-background font-medium py-4 text-sm mt-4 hover:bg-foreground/90 transition-colors shadow-lg active:scale-[0.98]"
+                    >
+                      Submit Commission Request
+                    </button>
+                  </form>
+                </motion.section>
+              )}
+            </AnimatePresence>
+
           </div>
         </div>
       </main>
-      <Footer />
+
+      {/* Sticky Bottom Action Bar (Apple Style) */}
+      <AnimatePresence>
+        {config.edition && (
+          <motion.div
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            exit={{ y: 100 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed bottom-0 left-0 right-0 z-50 border-t border-border/40 bg-background/80 px-6 py-4 backdrop-blur-xl"
+            style={{ boxShadow: '0 -10px 40px -20px hsl(var(--foreground) / 0.1)' }}
+          >
+            <div className="mx-auto flex max-w-7xl items-center justify-between">
+              <div className="flex flex-col">
+                <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground hidden sm:block mb-0.5">Configuration Total</span>
+                <span className="text-xl font-bold tracking-tight text-foreground">{formatPrice(totalPrice)}</span>
+              </div>
+
+              <button
+                onClick={() => {
+                  if (isConfigComplete && !showForm) {
+                    setShowForm(true);
+                    setTimeout(() => {
+                      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    }, 100);
+                  } else {
+                    // Find the next missing step and scroll to it
+                    if (!config.edition) document.getElementById('section-edition')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    else if (!config.channels) document.getElementById('section-channels')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    else if (!config.storage) document.getElementById('section-storage')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }
+                }}
+                className={`inline-flex h-11 items-center gap-2 rounded-full px-6 text-sm font-medium transition-all ${isConfigComplete && !showForm ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:scale-105 active:scale-95' : 'bg-secondary text-foreground hover:bg-secondary/80'}`}
+              >
+                {isConfigComplete ? (showForm ? 'Complete Form Above' : 'Review Commission') : 'Continue Setup'}
+                {!showForm && <ArrowRight size={16} strokeWidth={2} />}
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
