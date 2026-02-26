@@ -1,98 +1,86 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    --background: 0 0% 100%;
     --foreground: 222 47% 11%;
 
-    --card: 0 0% 100%;
+    --card: 210 40% 98%;
     --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 216 98% 40%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 216 100% 46%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
+    --secondary: 210 40% 98%;
     --secondary-foreground: 222 47% 11%;
 
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 173 79% 44%;
+    --accent: 210 40% 96%;
     --accent-foreground: 222 47% 11%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 222 84% 5%;
+    --ring: 216 100% 46%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Neurolab Clinical Prestige tokens */
+    --surface: 210 40% 98%;
+    --surface-border: 213 27% 84%;
+    --deep-space: 240 50% 3%;
+    --electric-blue: 216 100% 46%;
+
+    /* Apple Precision easing */
+    --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1.0);
   }
 
   .dark {
-    --background: 222 47% 11%;
+    --background: 222 84% 5%;
     --foreground: 210 40% 98%;
-
-    --card: 222 47% 11%;
+    --card: 222 84% 5%;
     --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 11%;
+    --popover: 222 84% 5%;
     --popover-foreground: 210 40% 98%;
-
-    --primary: 216 98% 52%;
+    --primary: 210 40% 98%;
     --primary-foreground: 222 47% 11%;
-
     --secondary: 217 33% 18%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217 33% 18%;
     --muted-foreground: 215 20% 65%;
-
-    --accent: 173 79% 37%;
+    --accent: 217 33% 18%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217 33% 18%;
     --input: 217 33% 18%;
     --ring: 213 27% 84%;
-  }
-
-  /* Sidebar variables (ensure readable colors in both light and dark themes) */
-  :root {
-    --sidebar-background: 0 0% 100%; /* white */
-    --sidebar-foreground: 222 47% 20%; /* darker text for better contrast */
-    --sidebar-muted: 215 16% 47%; /* muted text color */
-    --sidebar-primary: 216 98% 45%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-active-bg: 216 98% 45% / 0.1;
-    --sidebar-hover-bg: 216 98% 45% / 0.05;
-    --sidebar-accent: 216 98% 45%;
-    --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 214 32% 85%;
-    --sidebar-ring: 213 27% 84%;
-  }
-
-  .dark {
-    --sidebar-background: 222 47% 11%; /* dark */
-    --sidebar-foreground: 210 40% 98%; /* light text */
-    --sidebar-muted: 215 20% 65%; /* muted text color */
-    --sidebar-primary: 216 98% 52%; 
-    --sidebar-primary-foreground: 222 47% 11%;
-    --sidebar-active-bg: 216 98% 52% / 0.2;
-    --sidebar-hover-bg: 216 98% 52% / 0.1;
-    --sidebar-accent: 216 98% 52%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 20%;
-    --sidebar-ring: 213 27% 84%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -102,57 +90,80 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
-  h1 {
-    @apply text-3xl md:text-4xl;
-  }
-
-  h2 {
-    @apply text-2xl md:text-3xl;
-  }
-
-  h3 {
-    @apply text-xl md:text-2xl;
-  }
-
-  input, textarea {
-    @apply focus:outline-none;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    letter-spacing: -0.022em;
   }
 }
 
 @layer utilities {
-  .neural-card {
-    @apply bg-card border border-border rounded-xl shadow-sm transition-all duration-200;
-  }
-  
-  .neural-card-hover {
-    @apply hover:shadow-md hover:border-primary/20 transition-all duration-200;
+  .tracking-display {
+    letter-spacing: -0.04em;
   }
 
-  .neural-gradient {
-    @apply bg-gradient-to-br from-neural-blue to-neural-teal;
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
   }
-  
-  .text-neural-gradient {
-    @apply bg-gradient-to-r from-neural-blue to-neural-teal bg-clip-text text-transparent;
+}
+
+/* Grain texture overlay for deep-space sections */
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  z-index: 1;
+}
+
+/* Surgical Loader — 1px indeterminate progress bar */
+@keyframes surgical-shimmer {
+  0% {
+    transform: translateX(-100%);
   }
-  
-  .card-gradient {
-    @apply bg-gradient-to-br from-card to-secondary/80 backdrop-blur-sm;
+
+  100% {
+    transform: translateX(200%);
   }
-  
-  .glass {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
-  
-  .section-padding {
-    @apply py-10 px-4 md:px-8 lg:px-12;
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+.surgical-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 9999;
+  overflow: hidden;
+  background: hsl(var(--border));
+}
+
+.surgical-loader-bar {
+  height: 100%;
+  width: 50%;
+  background: hsl(var(--electric-blue));
+  animation: surgical-shimmer 1.2s cubic-bezier(0.25, 0.1, 0.25, 1.0) infinite;
 }
