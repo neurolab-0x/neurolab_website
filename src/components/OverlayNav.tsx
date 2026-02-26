@@ -21,7 +21,14 @@ const navSections = [
     links: [
       { label: 'About', to: '/about' },
       { label: 'Careers', to: '/careers' },
+      { label: 'Blog', to: '/blog' },
       { label: 'Contact', to: '/contact' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Docs', to: '/docs' },
     ],
   },
 ];

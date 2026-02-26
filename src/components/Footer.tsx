@@ -19,14 +19,15 @@ const linkGroups = [
         links: [
             { label: 'About', to: '/about' },
             { label: 'Careers', to: '/careers' },
+            { label: 'Blog', to: '/blog' },
             { label: 'Contact', to: '/contact' },
         ],
     },
     {
         title: 'Resources',
         links: [
-            { label: 'Documentation', to: '/ai-platform' },
-            { label: 'API Reference', to: '/ai-platform' },
+            { label: 'Documentation', to: '/docs' },
+            { label: 'API Reference', to: '/docs' },
             { label: 'System Status', href: '#' },
         ],
     },

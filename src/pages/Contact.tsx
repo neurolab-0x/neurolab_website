@@ -401,7 +401,7 @@ const Contact = () => {
                   REST and WebSocket APIs for neural data streaming, device management, and analysis integration.
                 </p>
                 <Link
-                  to="/ai-platform"
+                  to="/docs"
                   className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition-opacity duration-300 hover:opacity-60"
                 >
                   View Docs <ArrowRight size={14} strokeWidth={1.5} />
