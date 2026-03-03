@@ -4,16 +4,18 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Crosshair, ShieldCheck, Eye } from 'lucide-react';
 
 const values = [
-  { icon: Crosshair, title: 'Precision', desc: 'Sub-millimeter electrode placement with nanoscale signal fidelity. Every measurement matters.' },
+  { icon: Crosshair, title: 'Precision', desc: 'Micro detectio, Every measurement matters.' },
   { icon: ShieldCheck, title: 'Safety', desc: 'FDA-pathway compliance, redundant fail-safes, and continuous monitoring built into every device.' },
   { icon: Eye, title: 'Openness', desc: 'Open data formats, published research, and transparent methodology. Science advances through collaboration.' },
 ];
 
 const leaders = [
-  { name: 'Dr. Elena Vasquez', role: 'Chief Executive Officer', field: 'Computational Neuroscience' },
-  { name: 'James Park', role: 'Chief Technology Officer', field: 'Neural Engineering' },
-  { name: 'Dr. Amara Osei', role: 'Chief Science Officer', field: 'Clinical Neurophysiology' },
-  { name: 'Michael Chen', role: 'VP of Engineering', field: 'Embedded Systems' },
+  { name: 'Asimwe Landry C. E.', role: 'Chief Executive Officer', field: 'Computational Neuroscience' },
+  { name: 'Aine Dushimire', role: 'Chief Technology Officer', field: 'Neural Engineering' },
+  { name: 'Prosper Mugisha', role: 'Chief Science Officer', field: 'Clinical Neurophysiology' },
+  { name: 'Esther Hope Uhirwe', role: 'VP of Engineering', field: 'Embedded Systems' },
+  { name: 'Winny Darlene', role: 'VP of Engineering', field: 'Embedded Systems' },
+
 ];
 
 const About = () => {
