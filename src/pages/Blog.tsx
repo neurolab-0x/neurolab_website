@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { blogPosts, type BlogPost } from '@/data/blog';
+import { getBlogPosts, type BlogPost } from '@/lib/content';
 import { ArrowUpRight, Clock } from 'lucide-react';
 
 const sfPro =
@@ -138,8 +138,8 @@ const Blog = () => {
 
     const filtered =
         activeCategory === 'All'
-            ? blogPosts
-            : blogPosts.filter((p) => p.category === activeCategory);
+            ? getBlogPosts()
+            : getBlogPosts().filter((p) => p.category === activeCategory);
 
     return (
         <div className="min-h-screen bg-background">
