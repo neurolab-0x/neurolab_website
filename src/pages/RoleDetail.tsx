@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ArrowLeft, ArrowUpRight, MapPin, Briefcase, Clock } from 'lucide-react';
-import { getRoleBySlug } from '@/data/careers';
+import { getRoleBySlug } from '@/lib/content';
 
 const RoleDetail = () => {
     const { slug } = useParams<{ slug: string }>();

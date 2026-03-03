@@ -4,14 +4,14 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Minus, Plus, ArrowUpRight } from 'lucide-react';
-import { departments } from '@/data/careers';
+import { getDepartments, type Department } from '@/lib/content';
 
 /* ──────────────────────────────────────────────
    Department Accordion — Neuralink line-based
    No containers. Horizontal rules only.
    ────────────────────────────────────────────── */
 
-const DepartmentBlock = ({ dept }: { dept: (typeof departments)[number] }) => {
+const DepartmentBlock = ({ dept }: { dept: Department }) => {
   const [expanded, setExpanded] = useState(false);
   const { ref, isVisible } = useScrollReveal(0.1);
 
@@ -185,11 +185,11 @@ const Careers = () => {
                 Open Departments
               </p>
               <p className="text-xs tabular-nums text-muted-foreground">
-                {departments.reduce((sum, d) => sum + d.roles.length, 0)} open roles
+                {getDepartments().reduce((sum, d) => sum + d.roles.length, 0)} open roles
               </p>
             </div>
 
-            {departments.map((dept) => (
+            {getDepartments().map((dept) => (
               <DepartmentBlock key={dept.index} dept={dept} />
             ))}
 
