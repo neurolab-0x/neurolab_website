@@ -35,7 +35,7 @@ const formatPrice = (price: number) => {
   }).format(price);
 };
 
-const easing = [0.16, 1, 0.3, 1]; // Apple-like custom easing
+const easing: [number, number, number, number] = [0.16, 1, 0.3, 1]; // Apple-like custom easing
 
 const Shop = () => {
   const [config, setConfig] = useState<CommissionConfig>({
@@ -154,8 +154,8 @@ const Shop = () => {
                       className="group relative w-full overflow-hidden rounded-2xl p-6 text-left transition-all duration-300"
                       style={{
                         background: isSelected ? 'hsl(var(--card))' : 'hsl(var(--secondary) / 0.5)',
-                        border: isSelected ? '1px solid hsl(var(--primary))' : '1px solid hsl(var(--border) / 0.6)',
-                        boxShadow: isSelected ? '0 0 0 1px hsl(var(--primary)), 0 8px 24px -8px hsl(var(--primary) / 0.15)' : 'none',
+                        border: isSelected ? '0.5px solid hsl(var(--primary))' : '0.5px solid hsl(var(--surface-border))',
+                        boxShadow: isSelected ? '0 4px 16px -4px hsl(var(--primary) / 0.08)' : 'none',
                       }}
                     >
                       <div className="flex items-start justify-between mb-4">
@@ -210,8 +210,8 @@ const Shop = () => {
                           className="group relative w-full overflow-hidden rounded-2xl p-6 text-left transition-all duration-300"
                           style={{
                             background: isSelected ? 'hsl(var(--card))' : 'hsl(var(--secondary) / 0.5)',
-                            border: isSelected ? '1px solid hsl(var(--primary))' : '1px solid hsl(var(--border) / 0.6)',
-                            boxShadow: isSelected ? '0 0 0 1px hsl(var(--primary)), 0 8px 24px -8px hsl(var(--primary) / 0.15)' : 'none',
+                            border: isSelected ? '0.5px solid hsl(var(--primary))' : '0.5px solid hsl(var(--surface-border))',
+                            boxShadow: isSelected ? '0 4px 16px -4px hsl(var(--primary) / 0.08)' : 'none',
                           }}
                         >
                           <div className="flex items-start justify-between mb-4">
@@ -268,8 +268,8 @@ const Shop = () => {
                           className="group relative w-full overflow-hidden rounded-2xl p-6 text-left transition-all duration-300"
                           style={{
                             background: isSelected ? 'hsl(var(--card))' : 'hsl(var(--secondary) / 0.5)',
-                            border: isSelected ? '1px solid hsl(var(--primary))' : '1px solid hsl(var(--border) / 0.6)',
-                            boxShadow: isSelected ? '0 0 0 1px hsl(var(--primary)), 0 8px 24px -8px hsl(var(--primary) / 0.15)' : 'none',
+                            border: isSelected ? '0.5px solid hsl(var(--primary))' : '0.5px solid hsl(var(--surface-border))',
+                            boxShadow: isSelected ? '0 4px 16px -4px hsl(var(--primary) / 0.08)' : 'none',
                           }}
                         >
                           <div className="flex items-start justify-between mb-4">
