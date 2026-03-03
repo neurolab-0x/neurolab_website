@@ -1,0 +1,12 @@
+{
+    "slug": "multi-region-decoding-study",
+    "title": "Multi-Region Decoding: A 128-Patient Study",
+    "excerpt": "Results from our largest clinical study to date show that distributed multi-region recordings outperform single-region approaches by 34% on complex motor tasks.",
+    "category": "Research",
+    "date": "Jan 30, 2026",
+    "readTime": "10 min read",
+    "featured": true,
+    "thumbnail": "",
+    "coverImage": "",
+    "body": "## Study Design\n\nThis paper presents results from the largest multi-region brain-computer interface study ever conducted. Over 18 months, 128 participants with upper-limb motor impairments were enrolled across 12 clinical sites in the United States and Europe.\n\nEach participant was implanted with two Neurolab N1 arrays — one in primary motor cortex (M1) and one in premotor cortex (PMC). Neural activity was recorded simultaneously from both regions during a standardized battery of motor tasks.\n\n## Key Findings\n\n### 1. Multi-Region Advantage\n\nParticipants using dual-region decoding achieved a **34% improvement** in complex motor task accuracy compared to single-region M1-only decoding. The improvement was most pronounced in:\n\n- **Bimanual coordination tasks**: 41% improvement\n- **Sequential movement planning**: 38% improvement\n- **Force modulation**: 27% improvement\n\n### 2. Temporal Dynamics\n\nWe discovered that premotor cortex activity consistently preceded motor cortex activation by 120-180ms, providing a predictive signal that the decoder could leverage for anticipatory control.\n\n### 3. Long-Term Stability\n\nDecoder performance remained stable over the 18-month study period with minimal recalibration. The adaptive algorithms maintained >95% of initial accuracy with weekly 5-minute calibration sessions.\n\n## Clinical Implications\n\nThese results have immediate implications for the next generation of clinical BCI systems. By recording from multiple cortical areas, we can provide patients with more natural, intuitive control over assistive devices.\n\n> \"For the first time, I could reach for a cup of coffee and actually feel like my brain was doing the work, not some machine.\" — Study Participant P-047\n\n## Data Availability\n\nThe anonymized dataset from this study will be made available through the Open Neuro Data Consortium. We believe open science accelerates progress for everyone.\n\nFor clinical partnership inquiries, please [contact our research team](/contact)."
+}

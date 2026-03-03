@@ -1,0 +1,107 @@
+{
+    "index": "03",
+    "name": "Clinical Operations",
+    "disciplines": "Field Research · Patient Advocacy · Lab Management",
+    "roles": [
+        {
+            "slug": "clinical-research-director",
+            "title": "Clinical Research Director",
+            "location": "Boston, MA",
+            "level": "Director",
+            "commitment": "Full-time",
+            "about": "You will lead Neurolab's clinical research program from protocol design through patient enrollment and data analysis. This role reports directly to the CSO and is responsible for the integrity and pace of our clinical validation pipeline.",
+            "responsibilities": [
+                "Design and execute Phase I/II clinical studies for neural interface devices",
+                "Manage relationships with clinical trial sites, PIs, and CROs",
+                "Oversee IRB submissions, informed consent, and regulatory documentation",
+                "Build and lead a clinical research team of coordinators and data managers",
+                "Present results to regulatory bodies, advisory boards, and investors"
+            ],
+            "requirements": [
+                "MD or PhD in Clinical Neuroscience, Biomedical Engineering, or related field",
+                "10+ years in clinical research leadership for medical devices or neurotechnology",
+                "Experience with FDA IDE submissions and GCP compliance",
+                "Track record of successful clinical studies from design to publication"
+            ],
+            "niceToHave": [
+                "Board certification in neurology or neurosurgery",
+                "Prior experience with implantable device clinical programs (DBS, cochlear)"
+            ]
+        },
+        {
+            "slug": "field-research-coordinator",
+            "title": "Field Research Coordinator",
+            "location": "Zürich, CH",
+            "level": "Senior",
+            "commitment": "Full-time",
+            "about": "You will coordinate multi-site clinical research activities across European partner hospitals. This role requires rigorous protocol adherence, excellent communication with clinical teams, and deep respect for patient welfare.",
+            "responsibilities": [
+                "Coordinate patient screening, enrollment, and follow-up across EU sites",
+                "Ensure protocol compliance and data quality at partner hospitals",
+                "Manage regulatory submissions for EU MDR and local ethics committees",
+                "Serve as primary liaison between Neurolab engineering and clinical PIs",
+                "Maintain clinical trial management system (CTMS) and eCRF databases"
+            ],
+            "requirements": [
+                "MS in Clinical Research, Public Health, or Biomedical Science",
+                "4+ years as a clinical research coordinator for medical devices",
+                "Fluency in English and German (French is a plus)",
+                "Experience with EU MDR and ISO 14155 clinical investigation standards"
+            ],
+            "niceToHave": [
+                "ACRP or SOCRA certification",
+                "Experience with neurology or neurosurgery clinical trials"
+            ]
+        },
+        {
+            "slug": "patient-advocacy-specialist",
+            "title": "Patient Advocacy Specialist",
+            "location": "Remote",
+            "level": "Senior",
+            "commitment": "Full-time",
+            "about": "You will serve as the voice of patients within Neurolab — ensuring that our technology development is guided by real patient needs, concerns, and experiences. This role bridges clinical research, product design, and community engagement.",
+            "responsibilities": [
+                "Build and maintain relationships with patient advocacy organizations",
+                "Conduct patient needs assessments and journey mapping",
+                "Advise product teams on accessibility, usability, and patient experience",
+                "Develop patient education materials for clinical trial participants",
+                "Organize patient advisory board meetings and feedback sessions"
+            ],
+            "requirements": [
+                "BS/MS in Public Health, Social Work, or Patient Advocacy",
+                "5+ years in patient advocacy, community health, or clinical outreach",
+                "Experience with neurological conditions (ALS, spinal cord injury, stroke)",
+                "Excellent written and verbal communication skills"
+            ],
+            "niceToHave": [
+                "Lived experience with disability or chronic neurological conditions",
+                "Experience with patient-reported outcome measures (PROMs)"
+            ]
+        },
+        {
+            "slug": "lab-operations-manager",
+            "title": "Lab Operations Manager",
+            "location": "San Francisco, CA",
+            "level": "Lead",
+            "commitment": "Full-time",
+            "about": "You will run the day-to-day operations of Neurolab's R&D and clinical prototyping laboratories. This role ensures that our research teams have safe, organized, and well-equipped facilities to do their best work.",
+            "responsibilities": [
+                "Manage lab operations including equipment procurement, maintenance, and calibration",
+                "Implement and enforce EHS protocols for biological and electrical hazards",
+                "Coordinate cleanroom scheduling and consumables inventory",
+                "Manage vendor relationships for specialized equipment and materials",
+                "Support facility planning for lab expansion and new site buildout"
+            ],
+            "requirements": [
+                "BS in Engineering, Life Sciences, or Facilities Management",
+                "5+ years managing R&D or clinical laboratories",
+                "Experience with ISO 14644 cleanroom standards and biosafety protocols",
+                "Strong organizational and vendor management skills"
+            ],
+            "niceToHave": [
+                "Experience in medical device or semiconductor fabrication environments",
+                "OSHA 30-hour certification or equivalent"
+            ]
+        }
+    ]
+}

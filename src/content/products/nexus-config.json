@@ -1,0 +1,50 @@
+{
+    "editions": [
+        {
+            "id": "clinical",
+            "title": "Clinical Edition",
+            "price": 12500,
+            "desc": "FDA-pathway compliant. Designed for clinical environments with certified safety protocols."
+        },
+        {
+            "id": "enterprise",
+            "title": "Enterprise Edition",
+            "price": 28000,
+            "desc": "Full-scale deployment for institutions. High-throughput data and multi-user access."
+        }
+    ],
+    "sensors": [
+        {
+            "value": 128,
+            "label": "128 Channels",
+            "priceOffset": 0,
+            "desc": "Standard density. Ideal for targeted cortical mapping."
+        },
+        {
+            "value": 256,
+            "label": "256 Channels",
+            "priceOffset": 4500,
+            "desc": "High density. Full-hemisphere coverage with sub-millimeter precision."
+        },
+        {
+            "value": 512,
+            "label": "512 Channels",
+            "priceOffset": 12000,
+            "desc": "Ultra density. Whole-brain capture for advanced research protocols."
+        }
+    ],
+    "storage": [
+        {
+            "id": "local-only",
+            "title": "Local-Only",
+            "priceOffset": 0,
+            "desc": "Air-gapped operation. All processing and storage remains on-premises."
+        },
+        {
+            "id": "cloud-sync",
+            "title": "Cloud-Sync (1 Year)",
+            "priceOffset": 1200,
+            "desc": "Real-time data streaming to Neurolab Cloud with automated analysis pipelines."
+        }
+    ]
+}

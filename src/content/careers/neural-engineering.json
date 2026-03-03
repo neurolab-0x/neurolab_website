@@ -1,0 +1,111 @@
+{
+    "index": "01",
+    "name": "Neural Engineering",
+    "disciplines": "Hardware · Signal Processing · Material Science",
+    "roles": [
+        {
+            "slug": "senior-neural-hardware-engineer",
+            "title": "Senior Neural Hardware Engineer",
+            "location": "San Francisco, CA",
+            "level": "Senior",
+            "commitment": "Full-time",
+            "about": "You will design next-generation electrode arrays and analog front-end circuits for high-channel-count neural recording systems. Your work directly impacts the fidelity and safety of brain-computer interfaces deployed in clinical settings.",
+            "responsibilities": [
+                "Design and validate high-density electrode array architectures (128–512 channels)",
+                "Develop analog signal conditioning circuits with sub-microvolt noise floors",
+                "Collaborate with material science team on biocompatible substrate selection",
+                "Own the hardware verification pipeline from bench to clinical prototype",
+                "Interface with regulatory team on FDA design history file documentation"
+            ],
+            "requirements": [
+                "MS/PhD in Electrical Engineering, Biomedical Engineering, or related field",
+                "5+ years experience in mixed-signal ASIC or neural recording system design",
+                "Proficiency with Cadence Virtuoso, MATLAB, and PCB layout tools",
+                "Experience with ISO 13485 or IEC 62304 medical device standards",
+                "Published research in neural interfaces, bioelectronics, or related areas"
+            ],
+            "niceToHave": [
+                "Experience with flexible polyimide or parylene-C substrates",
+                "Familiarity with inductive power transfer for implantable systems",
+                "Prior FDA 510(k) or De Novo submission experience"
+            ]
+        },
+        {
+            "slug": "signal-processing-architect",
+            "title": "Signal Processing Architect",
+            "location": "Boston, MA",
+            "level": "Staff",
+            "commitment": "Full-time",
+            "about": "You will architect the real-time signal processing pipeline that transforms raw neural recordings into clinically actionable data. This role bridges hardware output and the NeurAI intelligence layer.",
+            "responsibilities": [
+                "Design low-latency DSP pipelines for multi-channel neural decoding (<50ms)",
+                "Implement adaptive filtering algorithms for artifact rejection and noise suppression",
+                "Define signal quality metrics and automated calibration procedures",
+                "Optimize compute kernels for embedded ARM and GPU targets",
+                "Publish methodologies and contribute to open neuroscience standards"
+            ],
+            "requirements": [
+                "PhD in Signal Processing, Computational Neuroscience, or related field",
+                "7+ years in real-time DSP system design",
+                "Deep expertise in spectral analysis, Kalman filtering, and Bayesian decoding",
+                "Proficiency in C++, Python, and CUDA",
+                "Track record of peer-reviewed publications"
+            ],
+            "niceToHave": [
+                "Experience with BCI2000, Open Ephys, or similar frameworks",
+                "Familiarity with edge ML inference (TensorRT, ONNX Runtime)"
+            ]
+        },
+        {
+            "slug": "material-science-lead",
+            "title": "Material Science Lead",
+            "location": "San Francisco, CA",
+            "level": "Lead",
+            "commitment": "Full-time",
+            "about": "You will lead the selection, characterization, and qualification of biocompatible materials for implantable neural interfaces. Your decisions directly affect device longevity, signal quality, and patient safety.",
+            "responsibilities": [
+                "Evaluate and qualify biocompatible polymers, ceramics, and metal thin films",
+                "Design accelerated aging and reliability test protocols",
+                "Collaborate with hardware engineers on electrode coating and encapsulation strategies",
+                "Manage external testing lab relationships for ISO 10993 biocompatibility testing",
+                "Build and lead a small materials characterization team"
+            ],
+            "requirements": [
+                "PhD in Materials Science, Biomedical Engineering, or Chemistry",
+                "6+ years in medical device materials or implantable electronics",
+                "Expertise in thin-film deposition (sputtering, ALD, electroplating)",
+                "Working knowledge of ISO 10993 and ASTM F2129 standards"
+            ],
+            "niceToHave": [
+                "Experience with hermetic packaging for implantable electronics",
+                "Familiarity with SEM, XPS, and impedance spectroscopy characterization"
+            ]
+        },
+        {
+            "slug": "embedded-firmware-engineer",
+            "title": "Embedded Firmware Engineer",
+            "location": "Remote",
+            "level": "Senior",
+            "commitment": "Full-time",
+            "about": "You will develop the embedded firmware that orchestrates data acquisition, wireless communication, and power management in our neural recording devices. Safety-critical, real-time, and resource-constrained.",
+            "responsibilities": [
+                "Develop real-time firmware for ARM Cortex-M and RISC-V microcontrollers",
+                "Implement BLE 5.3 and proprietary RF communication protocols",
+                "Design power management firmware for battery and energy-harvesting systems",
+                "Write safety-critical code compliant with IEC 62304 Class C",
+                "Own firmware CI/CD pipeline and hardware-in-the-loop testing"
+            ],
+            "requirements": [
+                "BS/MS in Computer Engineering, Electrical Engineering, or related field",
+                "5+ years embedded firmware development (bare-metal and RTOS)",
+                "Proficiency in C and assembly for ARM architectures",
+                "Experience with SPI, I2C, UART, and DMA peripherals",
+                "Understanding of EMC/EMI considerations for medical devices"
+            ],
+            "niceToHave": [
+                "Experience with Zephyr RTOS or FreeRTOS in medical applications",
+                "Familiarity with wireless power transfer protocols (Qi, AirFuel)"
+            ]
+        }
+    ]
+}

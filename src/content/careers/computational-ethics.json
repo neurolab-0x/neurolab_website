@@ -1,0 +1,82 @@
+{
+    "index": "02",
+    "name": "Computational Ethics",
+    "disciplines": "Policy · AI Safety · Human-Machine Interface",
+    "roles": [
+        {
+            "slug": "ai-safety-researcher",
+            "title": "AI Safety Researcher",
+            "location": "Remote",
+            "level": "Principal",
+            "commitment": "Full-time",
+            "about": "You will define and enforce safety constraints for neural decoding models deployed in clinical environments. Your work ensures that AI-assisted brain-computer interfaces behave predictably, transparently, and within ethical bounds.",
+            "responsibilities": [
+                "Develop formal verification frameworks for neural decoding model safety",
+                "Design adversarial robustness testing for BCI inference pipelines",
+                "Establish model interpretability standards for clinical deployment",
+                "Collaborate with regulatory team on AI/ML-specific FDA guidance (PCCP)",
+                "Publish safety research and engage with the broader AI safety community"
+            ],
+            "requirements": [
+                "PhD in Machine Learning, AI Safety, or Computational Neuroscience",
+                "8+ years in ML safety, robustness, or interpretability research",
+                "Track record of publications at NeurIPS, ICML, AISTATS, or equivalent",
+                "Experience with medical AI regulatory frameworks (FDA, EU MDR)"
+            ],
+            "niceToHave": [
+                "Experience with formal methods (SMT solvers, abstract interpretation)",
+                "Familiarity with differential privacy in clinical data settings"
+            ]
+        },
+        {
+            "slug": "neuroethics-policy-lead",
+            "title": "Neuroethics Policy Lead",
+            "location": "Washington, DC",
+            "level": "Lead",
+            "commitment": "Full-time",
+            "about": "You will shape Neurolab's ethical framework for brain data privacy, informed consent, and neurorights. This role operates at the intersection of technology policy, bioethics, and regulatory strategy.",
+            "responsibilities": [
+                "Draft and maintain Neurolab's neural data governance policies",
+                "Engage with policymakers, IRBs, and standards bodies on neurotechnology regulation",
+                "Design informed consent protocols for clinical BCI research",
+                "Conduct ethical impact assessments for new product capabilities",
+                "Represent Neurolab at conferences and public forums on neuroethics"
+            ],
+            "requirements": [
+                "JD, PhD, or equivalent in Bioethics, Science Policy, or related field",
+                "6+ years in technology policy, health policy, or bioethics",
+                "Deep knowledge of HIPAA, GDPR, and emerging neurorights legislation",
+                "Published work on neuroethics, data governance, or AI policy"
+            ],
+            "niceToHave": [
+                "Prior IRB or ethics committee membership experience",
+                "Relationships with IEEE, OECD, or WHO neurotechnology working groups"
+            ]
+        },
+        {
+            "slug": "human-machine-interface-designer",
+            "title": "Human-Machine Interface Designer",
+            "location": "San Francisco, CA",
+            "level": "Senior",
+            "commitment": "Full-time",
+            "about": "You will design the interaction layer between neural signals and digital systems — from cursor control paradigms to communication interfaces for patients with motor impairments. Precision, latency, and cognitive load are your design variables.",
+            "responsibilities": [
+                "Design and prototype neural cursor control and selection paradigms",
+                "Conduct user studies with patients and clinicians in lab settings",
+                "Define UX metrics for BCI interaction (throughput, error rate, fatigue)",
+                "Collaborate with signal processing team on decoder-UI co-optimization",
+                "Create design specifications for clinical-grade assistive interfaces"
+            ],
+            "requirements": [
+                "MS in HCI, Cognitive Science, or Biomedical Engineering",
+                "5+ years in interaction design for assistive technology or medical devices",
+                "Proficiency in Figma, prototyping tools, and user research methods",
+                "Familiarity with motor rehabilitation or augmentative communication"
+            ],
+            "niceToHave": [
+                "Experience with P300, SSVEP, or motor imagery BCI paradigms",
+                "Published UX research in assistive technology"
+            ]
+        }
+    ]
+}

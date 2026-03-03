@@ -1,0 +1,9 @@
+{
+    "slug": "open-source-spike-sorting",
+    "title": "Open-Sourcing Our Real-Time Spike Sorting Engine",
+    "excerpt": "We are releasing NeurSort under the Apache 2.0 license — a GPU-accelerated spike sorting library capable of processing 1024 channels in real time on edge hardware.",
+    "category": "Engineering",
+    "date": "Jan 8, 2026",
+    "readTime": "7 min read",
+    "featured": false
+}
