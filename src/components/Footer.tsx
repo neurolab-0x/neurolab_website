@@ -8,7 +8,7 @@ const linkGroups = [
         title: 'Product',
         links: [
             { label: 'Technology', href: '/#technology' },
-            { label: 'Research', href: '/#research' },
+            { label: 'Research', href: '/blog?category=Research' },
             { label: 'Safety', href: '/#safety' },
             { label: 'NeurAI Platform', to: '/ai-platform' },
             { label: 'Shop', to: '/shop' },
