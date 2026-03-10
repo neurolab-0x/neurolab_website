@@ -30,6 +30,9 @@ collections:
       - { label: "Date", name: "date", widget: "string", hint: "e.g. Feb 20, 2026" }
       - { label: "Read Time", name: "readTime", widget: "string", hint: "e.g. 12 min read" }
       - { label: "Featured", name: "featured", widget: "boolean", default: false, required: false }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false, hint: "Used on the blog list cards" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false, hint: "Used at the top of the blog detail page" }
+      - { label: "Body", name: "body", widget: "markdown", required: false }
 
   # ── Career Departments ──
   - name: "careers"
@@ -90,3 +93,20 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Price Offset (USD)", name: "priceOffset", widget: "number", value_type: "int" }
           - { label: "Description", name: "desc", widget: "text" }
+
+  # ── Partners ──
+  - name: "partners"
+    label: "Partners"
+    files:
+      - label: "Partners Data"
+        name: "data"
+        file: "src/content/partners/data.json"
+        fields:
+          - label: "Partners List"
+            name: "partners"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Logo Image", name: "logo", widget: "image", required: false, hint: "Upload a real logo (optional). Leave blank to use domain/icon fallback." }
+              - { label: "Domain", name: "domain", widget: "string", hint: "Used to fetch the clearbit logo, e.g. nvidia.com", required: false }
+              - { label: "Icon Name (Fallback)", name: "icon", widget: "string", hint: "Lucide icon name if no domain logo, e.g. Cpu", required: false }
