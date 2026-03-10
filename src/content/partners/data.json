@@ -1,0 +1,26 @@
+{
+    "partners": [
+        {
+            "name": "Rwanda Coding Academy",
+            "domain": "rca.ac.rw",
+            "logo": "/uploads/rca-logo.png"
+        },
+        {
+            "name": "NVidia",
+            "domain": "nvidia.com"
+        },
+        {
+            "name": "UPSIDEDOWN LABS",
+            "domain": "upsidedownlabs.tech"
+        },
+        {
+            "name": "APHEZIS TECH LTD",
+            "domain": "aphezis.com",
+            "logo": "/uploads/aphezis-logo.png"
+        },
+        {
+            "name": "OPENBCI",
+            "domain": "openbci.com"
+        }
+    ]
+}

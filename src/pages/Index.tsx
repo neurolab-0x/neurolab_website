@@ -4,6 +4,7 @@ import HeroSection from '@/components/HeroSection';
 import BentoGrid from '@/components/SpecGrid';
 import InfiniteDirectory from '@/components/InfiniteDirectory';
 import ConversionTerminal from '@/components/ConversionTerminal';
+import PartnersSection from '@/components/PartnersSection';
 
 const Index = () => {
   return (
@@ -12,6 +13,9 @@ const Index = () => {
       <main>
         {/* SECTION 1: The Surgical Hero */}
         <HeroSection />
+
+        {/* SECTION 1.5: Our Partners */}
+        <PartnersSection />
 
         {/* SECTION 2: The Linear-System Bento Grid */}
         <BentoGrid />
