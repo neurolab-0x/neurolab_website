@@ -49,20 +49,30 @@ const BlogCard = ({ post, featured = false }: { post: BlogPost; featured?: boole
                     minHeight: featured ? '320px' : undefined,
                 }}
             >
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200" />
-                <div
-                    className="absolute inset-0 opacity-[0.03]"
-                    style={{
-                        backgroundImage:
-                            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
-                    }}
-                />
-                {/* Decorative neural pattern */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="h-24 w-24 rounded-full border border-slate-300/40 opacity-40" />
-                    <div className="absolute h-16 w-16 rounded-full border border-slate-300/30 opacity-30" />
-                    <div className="absolute h-32 w-32 rounded-full border border-slate-300/20 opacity-20" />
-                </div>
+                {post.thumbnail ? (
+                    <img
+                        src={post.thumbnail}
+                        alt={post.title}
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                ) : (
+                    <>
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200" />
+                        <div
+                            className="absolute inset-0 opacity-[0.03]"
+                            style={{
+                                backgroundImage:
+                                    "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+                            }}
+                        />
+                        {/* Decorative neural pattern */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="h-24 w-24 rounded-full border border-slate-300/40 opacity-40" />
+                            <div className="absolute h-16 w-16 rounded-full border border-slate-300/30 opacity-30" />
+                            <div className="absolute h-32 w-32 rounded-full border border-slate-300/20 opacity-20" />
+                        </div>
+                    </>
+                )}
             </div>
 
             {/* Content */}
@@ -106,10 +116,12 @@ const BlogCard = ({ post, featured = false }: { post: BlogPost; featured?: boole
                             {post.readTime}
                         </span>
                     </div>
-                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-card transition-all duration-300 group-hover:bg-foreground group-hover:text-background"
-                        style={{ border: '0.5px solid hsl(213 27% 84%)' }}>
-                        <ArrowUpRight size={13} strokeWidth={1.5} />
-                    </div>
+                    <Link to={`/blog/${post.slug}`}>
+                        <div className="flex h-7 w-7 items-center justify-center rounded-full bg-card transition-all duration-300 group-hover:bg-foreground group-hover:text-background"
+                            style={{ border: '0.5px solid hsl(213 27% 84%)' }}>
+                            <ArrowUpRight size={13} strokeWidth={1.5} />
+                        </div>
+                    </Link>
                 </div>
             </div>
         </article>

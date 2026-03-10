@@ -13,6 +13,7 @@ import RoleDetail from "./pages/RoleDetail";
 import Contact from "./pages/Contact";
 import AIPlatform from "./pages/AIPlatform";
 import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import Docs from "./pages/Docs";
 import NotFound from "./pages/NotFound";
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/careers/:slug" element={<RoleDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/docs" element={<Docs />} />
           <Route path="/ai-platform" element={<ProtectedRoute><AIPlatform /></ProtectedRoute>} />
           <Route path="*" element={<NotFound />} />
