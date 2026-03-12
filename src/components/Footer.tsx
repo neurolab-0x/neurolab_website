@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import { ArrowUpRight, Sun, Moon } from 'lucide-react';
 
 const sfPro = "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 
@@ -10,7 +11,7 @@ const linkGroups = [
             { label: 'Technology', href: '/#technology' },
             { label: 'Research', href: '/blog?category=Research' },
             { label: 'Safety', href: '/#safety' },
-            { label: 'NeurAI Platform', to: '/ai-platform' },
+            { label: 'Neurolab Platform', to: '/ai-platform' },
             { label: 'Shop', to: '/shop' },
         ],
     },
@@ -43,11 +44,13 @@ const linkGroups = [
 
 const socials = [
     { label: 'X / Twitter', href: 'https://x.com' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/neurolab-cc/' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/neurolab-inc/' },
     { label: 'GitHub', href: 'https://github.com/neurolab-0x/' },
 ];
 
 const Footer = () => {
+    const { theme, setTheme } = useTheme();
+
     return (
         <footer className="bg-background">
             {/* Top border */}
@@ -129,9 +132,20 @@ const Footer = () => {
                         © {new Date().getFullYear()} Neurolab Inc. All rights reserved.
                     </p>
 
-                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                        <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                        <span className="ml-1">All systems operational</span>
+                    <div className="flex items-center gap-6">
+                        <button
+                            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                            className="flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                            aria-label="Toggle theme"
+                        >
+                            {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+                            <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+                        </button>
+
+                        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                            <span className="ml-1">All systems operational</span>
+                        </div>
                     </div>
                 </div>
             </div>
