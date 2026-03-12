@@ -36,7 +36,7 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/docs" element={<Docs />} />
-          <Route path="/ai-platform" element={<ProtectedRoute><AIPlatform /></ProtectedRoute>} />
+          <Route path="/ai-platform" element={<AIPlatform />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
