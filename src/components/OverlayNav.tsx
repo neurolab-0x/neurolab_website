@@ -13,7 +13,7 @@ const navSections = [
       { label: 'Technology', to: '/#technology' },
       { label: 'Research', to: '/blog?category=Research' },
       { label: 'Shop', to: '/shop' },
-      { label: 'NeurAI Platform', to: '/ai-platform' },
+      { label: 'Neurolab Platform', to: '/ai-platform' },
     ],
   },
   {
