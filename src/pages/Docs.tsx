@@ -299,7 +299,7 @@ const Docs = () => {
                 <main className="flex-1 overflow-y-auto px-6 pb-32 lg:px-12">
                     <div
                         ref={contentRef}
-                        className="mx-auto max-w-3xl pt-12 transition-all duration-[600ms]"
+                        className="mx-auto max-w-4xl pt-12 transition-all duration-[600ms]"
                         style={{
                             opacity: contentVis ? 1 : 0,
                             transform: contentVis ? 'translateY(0)' : 'translateY(16px)',
@@ -308,207 +308,223 @@ const Docs = () => {
                     >
                         {/* Header */}
                         <div className="mb-12">
-                            <p className="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                                Documentation
+                            <p className="mb-3 text-xs font-medium uppercase tracking-widest text-primary">
+                                Official Documentation
                             </p>
                             <h1
                                 className="mb-4 text-foreground"
                                 style={{
                                     fontFamily: sfPro,
-                                    fontSize: 'clamp(28px, 4vw, 42px)',
-                                    fontWeight: 500,
+                                    fontSize: 'clamp(32px, 5vw, 48px)',
+                                    fontWeight: 600,
                                     letterSpacing: '-0.03em',
-                                    lineHeight: 1.2,
+                                    lineHeight: 1.1,
                                 }}
                             >
-                                Neurolab Docs
+                                Neurolab API & Platform Docs
                             </h1>
-                            <p className="max-w-lg text-base leading-relaxed text-muted-foreground">
-                                Everything you need to integrate with our neural interface platform — from
-                                device pairing to real-time data streaming and cloud analysis.
+                            <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
+                                Everything you need to integrate your applications with the world's most advanced clinical-grade neural interface platform. Follow the guides below to authenticate, stream real-time data, and run predictive analysis.
                             </p>
                         </div>
 
-                        {/* Popular Section */}
-                        <section className="mb-16">
-                            <h2
-                                className="mb-6 text-foreground"
-                                style={{
-                                    fontFamily: sfPro,
-                                    fontSize: '20px',
-                                    fontWeight: 500,
-                                    letterSpacing: '-0.02em',
-                                }}
-                            >
-                                Popular
-                            </h2>
-                            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                <PopularCard
-                                    icon={Zap}
-                                    title="Quick Start Guide"
-                                    desc="Get up and running with device pairing, authentication, and your first data stream in under 10 minutes."
-                                />
-                                <PopularCard
-                                    icon={Terminal}
-                                    title="REST API Overview"
-                                    desc="Explore endpoints for session management, patient records, and neural data retrieval."
-                                />
-                                <PopularCard
-                                    icon={Cpu}
-                                    title="Device SDK"
-                                    desc="Install and configure the Neurolab SDK for real-time electrode management and signal processing."
-                                />
-                                <PopularCard
-                                    icon={Plug}
-                                    title="Python SDK"
-                                    desc="Connect to Neurolab APIs from Python with our official SDK, including async support and Jupyter integration."
-                                />
-                            </div>
-                        </section>
-
                         {/* Divider */}
-                        <div
-                            className="mb-16"
-                            style={{ borderBottom: '0.5px solid hsl(213 27% 84%)' }}
-                        />
+                        <div className="mb-16 border-b border-surface-border w-full" />
 
-                        {/* API Basics section */}
-                        <section className="mb-16">
+                        {/* Authentication */}
+                        <section className="mb-20">
                             <h2
-                                className="mb-4 text-foreground"
-                                style={{
-                                    fontFamily: sfPro,
-                                    fontSize: '20px',
-                                    fontWeight: 500,
-                                    letterSpacing: '-0.02em',
-                                }}
+                                className="mb-4 text-2xl font-semibold text-foreground tracking-tight"
+                                style={{ fontFamily: sfPro }}
                             >
-                                API Basics
+                                Authentication
                             </h2>
-                            <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-                                The Neurolab API uses RESTful conventions with JSON payloads. All requests
-                                require a Bearer token obtained through OAuth 2.0. WebSocket endpoints are
-                                available for real-time neural data streaming.
+                            <p className="mb-6 text-base leading-relaxed text-muted-foreground">
+                                All API requests require a Bearer token. You can generate a persistent API Key from your developer dashboard, or use OAuth 2.0 flows for user-delegated access. Include the token in the <code className="bg-secondary px-1.5 py-0.5 rounded text-sm text-foreground">Authorization</code> header.
                             </p>
 
-                            {/* Code block */}
-                            <div
-                                className="overflow-hidden rounded-2xl"
-                                style={{ border: '0.5px solid hsl(213 27% 84%)' }}
-                            >
-                                <div
-                                    className="flex items-center justify-between px-4 py-2.5"
-                                    style={{ borderBottom: '0.5px solid hsl(213 27% 84%)', background: 'hsl(var(--secondary))' }}
-                                >
-                                    <span className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
-                                        Example Request
-                                    </span>
-                                    <span className="rounded-md bg-card px-2 py-0.5 text-[10px] font-medium text-muted-foreground"
-                                        style={{ border: '0.5px solid hsl(213 27% 84%)' }}>
-                                        bash
-                                    </span>
+                            <div className="overflow-hidden rounded-xl border border-surface-border bg-card">
+                                <div className="flex items-center px-4 py-3 border-b border-surface-border bg-secondary/50">
+                                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Authentication Header Example</span>
                                 </div>
-                                <pre className="overflow-x-auto bg-[#0a0f1c] p-5 text-[13px] leading-relaxed">
-                                    <code className="text-slate-300">
-                                        {`curl -X GET https://api.neurolab.cc/v1/sessions \\
-  -H "Authorization: Bearer <YOUR_TOKEN>" \\
+                                <pre className="p-4 text-sm text-slate-300 overflow-x-auto">
+                                    <code>
+                                        {`curl -X GET https://api.neurolab.inc/v1/sessions \\
+  -H "Authorization: Bearer dev_sk_abc1234567890def..." \\
   -H "Content-Type: application/json"`}
                                     </code>
                                 </pre>
                             </div>
                         </section>
 
-                        {/* Divider */}
-                        <div
-                            className="mb-16"
-                            style={{ borderBottom: '0.5px solid hsl(213 27% 84%)' }}
-                        />
-
-                        {/* Data Streaming */}
-                        <section className="mb-16">
+                        {/* REST API Endpoints */}
+                        <section className="mb-20">
                             <h2
-                                className="mb-4 text-foreground"
-                                style={{
-                                    fontFamily: sfPro,
-                                    fontSize: '20px',
-                                    fontWeight: 500,
-                                    letterSpacing: '-0.02em',
-                                }}
+                                className="mb-4 text-2xl font-semibold text-foreground tracking-tight"
+                                style={{ fontFamily: sfPro }}
                             >
-                                Real-Time Data Streaming
+                                Core REST APIs
                             </h2>
-                            <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-                                Connect to our WebSocket endpoint to receive live neural data. Each message
-                                contains timestamped spike trains and LFP signals from all active channels.
+                            <p className="mb-6 text-base leading-relaxed text-muted-foreground">
+                                Manage patient records, retrieve historical EEG sessions, and query predictive analysis results. The base URL for all endpoints is <code className="bg-secondary px-1.5 py-0.5 rounded text-sm text-foreground">https://api.neurolab.inc/v1</code>.
                             </p>
 
-                            <div
-                                className="overflow-hidden rounded-2xl"
-                                style={{ border: '0.5px solid hsl(213 27% 84%)' }}
-                            >
-                                <div
-                                    className="flex items-center justify-between px-4 py-2.5"
-                                    style={{ borderBottom: '0.5px solid hsl(213 27% 84%)', background: 'hsl(var(--secondary))' }}
-                                >
-                                    <span className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
-                                        WebSocket Connection
-                                    </span>
-                                    <span className="rounded-md bg-card px-2 py-0.5 text-[10px] font-medium text-muted-foreground"
-                                        style={{ border: '0.5px solid hsl(213 27% 84%)' }}>
-                                        javascript
-                                    </span>
+                            <div className="space-y-8">
+                                {/* Endpoint 1 */}
+                                <div className="rounded-xl border border-surface-border bg-card overflow-hidden">
+                                    <div className="flex items-center gap-3 px-4 py-3 border-b border-surface-border bg-secondary/50">
+                                        <span className="rounded bg-green-500/20 text-green-500 px-2 py-0.5 text-xs font-bold uppercase tracking-wider">GET</span>
+                                        <span className="font-mono text-sm text-foreground font-medium">/v1/analysis/session/:id</span>
+                                    </div>
+                                    <div className="p-4 border-b border-surface-border">
+                                        <p className="text-sm text-muted-foreground">Retrieves the complete processed neural analysis for a specific session, including anomalous wave detection and power spectral density profiles.</p>
+                                    </div>
+                                    <pre className="p-4 text-sm text-slate-300 overflow-x-auto">
+                                        <code>
+                                            {`{
+  "session_id": "ses_9x8c7v6b5n",
+  "status": "completed",
+  "analysis_summary": {
+    "dominant_frequency_hz": 12.4,
+    "anomalies_detected": 2,
+    "overall_snr_db": 21.4,
+    "band_power": {
+      "delta": 0.15,
+      "theta": 0.22,
+      "alpha": 0.45,
+      "beta": 0.12,
+      "gamma": 0.06
+    }
+  }
+}`}
+                                        </code>
+                                    </pre>
                                 </div>
-                                <pre className="overflow-x-auto bg-[#0a0f1c] p-5 text-[13px] leading-relaxed">
-                                    <code className="text-slate-300">
-                                        {`const ws = new WebSocket("wss://stream.neurolab.cc/v1/neural");
+
+                                {/* Endpoint 2 */}
+                                <div className="rounded-xl border border-surface-border bg-card overflow-hidden">
+                                    <div className="flex items-center gap-3 px-4 py-3 border-b border-surface-border bg-secondary/50">
+                                        <span className="rounded bg-blue-500/20 text-blue-500 px-2 py-0.5 text-xs font-bold uppercase tracking-wider">POST</span>
+                                        <span className="font-mono text-sm text-foreground font-medium">/v1/devices/calibration</span>
+                                    </div>
+                                    <div className="p-4 border-b border-surface-border">
+                                        <p className="text-sm text-muted-foreground">Initiates an impedance check and baseline calibration sequence on a connected hardware device.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Real-Time WebSocket Streaming */}
+                        <section className="mb-20">
+                            <h2
+                                className="mb-4 text-2xl font-semibold text-foreground tracking-tight"
+                                style={{ fontFamily: sfPro }}
+                            >
+                                Real-Time Streaming
+                            </h2>
+                            <p className="mb-6 text-base leading-relaxed text-muted-foreground">
+                                For live clinical dashboards and Brain-Computer Interfaces (BCI), use our low-latency WebSocket API to receive neural spike trains and raw LFP data in real time directly from the hardware.
+                            </p>
+
+                            <div className="overflow-hidden rounded-xl border border-surface-border bg-card">
+                                <div className="flex items-center justify-between px-4 py-3 border-b border-surface-border bg-secondary/50">
+                                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">WebSocket Client (JavaScript)</span>
+                                </div>
+                                <pre className="p-4 text-sm text-slate-300 overflow-x-auto">
+                                    <code>
+                                        {`const ws = new WebSocket("wss://stream.neurolab.inc/v1/neural");
 
 ws.onopen = () => {
   ws.send(JSON.stringify({
     action: "subscribe",
-    channels: [0, 1, 2, 3],
-    sample_rate: 30000
+    session_id: "ses_9x8c7v6b5n",
+    channels: ["Fp1", "Fp2", "C3", "C4"],
+    downsample_rate: 250 // Hz
   }));
 };
 
 ws.onmessage = (event) => {
-  const { timestamp, spikes, lfp } = JSON.parse(event.data);
-  console.log(\`Received \${spikes.length} spikes at \${timestamp}\`);
+  const data = JSON.parse(event.data);
+  if (data.type === "lfp_chunk") {
+      updateCharts(data.timestamp, data.channel_data);
+  }
 };`}
                                     </code>
                                 </pre>
                             </div>
                         </section>
 
-                        {/* Help section */}
-                        <section
-                            className="rounded-2xl bg-secondary p-8 text-center"
-                            style={{ border: '0.5px solid hsl(213 27% 84%)' }}
-                        >
-                            <Shield size={24} strokeWidth={1.2} className="mx-auto mb-4 text-muted-foreground" />
-                            <h3
-                                className="mb-2 text-foreground"
-                                style={{
-                                    fontFamily: sfPro,
-                                    fontSize: '18px',
-                                    fontWeight: 500,
-                                    letterSpacing: '-0.02em',
-                                }}
+                        {/* Webhooks */}
+                        <section className="mb-20">
+                            <h2
+                                className="mb-4 text-2xl font-semibold text-foreground tracking-tight"
+                                style={{ fontFamily: sfPro }}
                             >
-                                Need help?
-                            </h3>
-                            <p className="mx-auto mb-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                                If you have questions or run into issues, our engineering team is here to help.
+                                Webhooks
+                            </h2>
+                            <p className="mb-6 text-base leading-relaxed text-muted-foreground">
+                                Configure webhooks in your developer portal to receive asynchronous HTTP POST alerts when long-running predictive models finish or when anomalous brain activity is automatically flagged.
+                            </p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="p-5 rounded-xl border border-surface-border bg-card">
+                                    <h3 className="font-mono text-sm font-semibold text-primary mb-2">analysis.completed</h3>
+                                    <p className="text-sm text-muted-foreground">Fired when a batch processing job on historical EEG data finishes. Payload includes a pre-signed download URL for the resulting NWB files.</p>
+                                </div>
+                                <div className="p-5 rounded-xl border border-surface-border bg-card">
+                                    <h3 className="font-mono text-sm font-semibold text-red-500 mb-2">alert.anomaly_detected</h3>
+                                    <p className="text-sm text-muted-foreground">Fired when real-time ML monitors detect seizure precursors or critical signal degradation. High priority webhook.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Official SDKs */}
+                        <section className="mb-20">
+                            <h2
+                                className="mb-4 text-2xl font-semibold text-foreground tracking-tight"
+                                style={{ fontFamily: sfPro }}
+                            >
+                                Official SDKs
+                            </h2>
+                            <p className="mb-6 text-base leading-relaxed text-muted-foreground">
+                                We maintain official libraries for Python and Node.js. They handle authentication, automatic retries, WebSocket stream parsing, and data serialization automatically.
+                            </p>
+
+                            <div className="overflow-hidden rounded-xl border border-surface-border bg-card">
+                                <div className="flex items-center px-4 py-3 border-b border-surface-border bg-secondary/50">
+                                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Python Installation & Setup</span>
+                                </div>
+                                <pre className="p-4 text-sm text-slate-300 overflow-x-auto">
+                                    <code>
+                                        {`pip install neurolab-sdk
+
+import neurolab
+
+client = neurolab.Client(api_key="your_api_key")
+
+# Start an async stream handler
+@client.on_stream("ses_9x8c7v6b5n")
+def handle_stream(data):
+    print(f"Received amplitude: {data.ch1_uv}")
+
+client.connect_stream()`}
+                                    </code>
+                                </pre>
+                            </div>
+                        </section>
+
+                        {/* Help section */}
+                        <section className="mt-8 rounded-2xl border border-primary/20 bg-primary/5 p-8 text-center relative overflow-hidden">
+                            <Shield size={28} className="mx-auto mb-4 text-primary" />
+                            <h3 className="mb-2 text-xl font-semibold text-foreground tracking-tight">Need technical support?</h3>
+                            <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-muted-foreground">
+                                Enterprise customers have access to a dedicated Slack channel with our core engineers. For all others, reach out to our technical support team.
                             </p>
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center gap-2 rounded-2xl px-6 py-2.5 text-sm font-medium text-white transition-all duration-500 hover:-translate-y-0.5 active:scale-[0.98]"
-                                style={{
-                                    background: '#0060E9',
-                                    transitionTimingFunction: cardEasing,
-                                }}
+                                className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.3)] transition-all hover:scale-105"
                             >
-                                Contact Support
-                                <ArrowRight size={14} strokeWidth={1.5} />
+                                Open a Support Ticket
+                                <ArrowRight size={16} />
                             </Link>
                         </section>
                     </div>
