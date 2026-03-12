@@ -54,33 +54,48 @@
   }
 
   .dark {
-    --background: 222 84% 5%;
+    /* Night Laboratory Premium Palette */
+    --background: 240 33% 3%;
+    /* #05050A */
     --foreground: 210 40% 98%;
-    --card: 222 84% 5%;
+    /* #F8FAFC */
+    --card: 240 25% 6%;
+    /* #0C0C14 */
     --card-foreground: 210 40% 98%;
-    --popover: 222 84% 5%;
+    --popover: 240 25% 6%;
     --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
-    --secondary: 217 33% 18%;
+    --primary: 211 93% 58%;
+    /* Electric Blue #2E90FA */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 240 25% 10%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 18%;
+    --muted: 240 25% 10%;
+    --muted-foreground: 215 25% 65%;
+    /* Slate-400 #94A3B8 */
+    --accent: 211 93% 58%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 213 27% 84%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 217 33% 17.5%;
+    /* Slate-800 #1E293B */
+    --input: 217 33% 17.5%;
+    --ring: 211 93% 58%;
+
+    /* Sidebar integration */
+    --sidebar-background: 240 25% 6%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 211 93% 58%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 240 25% 10%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17.5%;
+    --sidebar-ring: 211 93% 58%;
+
+    /* Specific Tokens */
+    --surface: 240 25% 6%;
+    --surface-border: 217 33% 17.5%;
+    --deep-space: 240 33% 3%;
+    --electric-blue: 211 93% 58%;
   }
 }
 
