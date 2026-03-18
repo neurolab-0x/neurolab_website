@@ -1,0 +1,50 @@
+name: Sync to GitLab
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Mirror to GitLab (Lab)
+        env:
+          GITLAB_REPO: ${{ secrets.GITLAB_LAB_REPO_URL }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          if [[ -z "$GITLAB_REPO" || -z "$GITLAB_TOKEN" ]]; then
+            echo "Error: Missing Lab GitLab secrets. Please ensure GITLAB_LAB_REPO_URL and GITLAB_TOKEN are set."
+            exit 1
+          fi
+
+          # GitLab accepts token in this format: https://oauth2:TOKEN@gitlab.com/...
+          AUTH_URL="https://oauth2:${GITLAB_TOKEN}@${GITLAB_REPO#https://}"
+          git remote add lab "$AUTH_URL"
+          
+          # Push all branches and tags
+          git push lab --mirror --force
+
+      - name: Mirror to GitLab (Hub)
+        env:
+          GITLAB_REPO: ${{ secrets.GITLAB_HUB_REPO_URL }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          if [[ -z "$GITLAB_REPO" || -z "$GITLAB_TOKEN" ]]; then
+            echo "Error: Missing Hub GitLab secrets. Please ensure GITLAB_HUB_REPO_URL and GITLAB_TOKEN are set."
+            exit 1
+          fi
+
+          # GitLab accepts token in this format: https://oauth2:TOKEN@gitlab.com/...
+          AUTH_URL="https://oauth2:${GITLAB_TOKEN}@${GITLAB_REPO#https://}"
+          git remote add hub "$AUTH_URL"
+          
+          # Push all branches and tags
+          git push hub --mirror --force
