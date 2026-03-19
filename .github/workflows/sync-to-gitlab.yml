@@ -17,7 +17,7 @@ jobs:
 
       - name: Mirror to GitLab (Lab)
         env:
-          GITLAB_REPO: ${{ secrets.GITLAB_LAB_REPO_URL }}
+          GITLAB_REPO: git@gitlab.com:neurolab.inc/neurolab_webapp
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
         run: |
           if [[ -z "$GITLAB_REPO" || -z "$GITLAB_TOKEN" ]]; then
@@ -34,7 +34,7 @@ jobs:
 
       - name: Mirror to GitLab (Hub)
         env:
-          GITLAB_REPO: ${{ secrets.GITLAB_HUB_REPO_URL }}
+          GITLAB_REPO: git@gitlab.com:neurolab.inc/neurolab_webapp
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
         run: |
           if [[ -z "$GITLAB_REPO" || -z "$GITLAB_TOKEN" ]]; then
