@@ -30,7 +30,7 @@ jobs:
           # Expected target: gitlab.com/path/to/repo.git
           CLEAN_REPO=${GITLAB_REPO#https://}
           CLEAN_REPO=${CLEAN_REPO#git@}
-          CLEAN_REPO=${CLEAN_REPO%:}.git
+          CLEAN_REPO=${CLEAN_REPO/:/\/}
           CLEAN_REPO=${CLEAN_REPO%.git}.git # Always ends in .git
 
           AUTH_URL="https://oauth2:${GITLAB_TOKEN}@${CLEAN_REPO}"
@@ -52,7 +52,7 @@ jobs:
           # Clean up repo URL for oauth2 format
           CLEAN_REPO=${GITLAB_REPO#https://}
           CLEAN_REPO=${CLEAN_REPO#git@}
-          CLEAN_REPO=${CLEAN_REPO%:}.git
+          CLEAN_REPO=${CLEAN_REPO/:/\/}
           CLEAN_REPO=${CLEAN_REPO%.git}.git # Always ends in .git
 
           AUTH_URL="https://oauth2:${GITLAB_TOKEN}@${CLEAN_REPO}"
