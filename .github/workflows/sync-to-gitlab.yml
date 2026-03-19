@@ -36,7 +36,7 @@ jobs:
           git remote add lab "$AUTH_URL" || git remote set-url lab "$AUTH_URL"
           
           # Push main branch and tags
-          git push lab main:main --tags --force
+          git push lab main:main --force
 
       - name: Mirror to GitLab (Hub)
         env:
@@ -57,4 +57,4 @@ jobs:
           git remote add hub "$AUTH_URL" || git remote set-url hub "$AUTH_URL"
           
           # Push main branch and tags
-          git push hub main:main --tags --force
+          git push hub main:main --force
