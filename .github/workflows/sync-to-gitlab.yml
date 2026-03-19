@@ -35,8 +35,8 @@ jobs:
           AUTH_URL="https://git:${GITLAB_TOKEN}@${CLEAN_REPO}"
           git remote add lab "$AUTH_URL" || git remote set-url lab "$AUTH_URL"
           
-          # Push all branches and tags
-          git push lab --mirror --force
+          # Push main branch and tags
+          git push lab main:main --tags --force
 
       - name: Mirror to GitLab (Hub)
         env:
@@ -56,5 +56,5 @@ jobs:
           AUTH_URL="https://git:${GITLAB_TOKEN}@${CLEAN_REPO}"
           git remote add hub "$AUTH_URL" || git remote set-url hub "$AUTH_URL"
           
-          # Push all branches and tags
-          git push hub --mirror --force
+          # Push main branch and tags
+          git push hub main:main --tags --force
