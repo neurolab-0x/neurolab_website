@@ -30,13 +30,14 @@ jobs:
           # Expected target: gitlab.com/path/to/repo.git
           CLEAN_REPO=${GITLAB_REPO#https://}
           CLEAN_REPO=${CLEAN_REPO#git@}
-          CLEAN_REPO=${CLEAN_REPO/:/\/} # Replace first : with / for SSH format
+          CLEAN_REPO=${CLEAN_REPO%:}.git
+          CLEAN_REPO=${CLEAN_REPO%.git}.git # Always ends in .git
 
-          AUTH_URL="https://git:${GITLAB_TOKEN}@${CLEAN_REPO}"
+          AUTH_URL="https://oauth2:${GITLAB_TOKEN}@${CLEAN_REPO}"
           git remote add lab "$AUTH_URL" || git remote set-url lab "$AUTH_URL"
           
-          # Push main branch and tags
-          git push lab main:main --force
+          # Try standard push first, fallback to force if needed
+          git push lab main:main || git push lab main:main --force
 
       - name: Mirror to GitLab (Hub)
         env:
@@ -51,10 +52,11 @@ jobs:
           # Clean up repo URL for oauth2 format
           CLEAN_REPO=${GITLAB_REPO#https://}
           CLEAN_REPO=${CLEAN_REPO#git@}
-          CLEAN_REPO=${CLEAN_REPO/:/\/}
+          CLEAN_REPO=${CLEAN_REPO%:}.git
+          CLEAN_REPO=${CLEAN_REPO%.git}.git # Always ends in .git
 
-          AUTH_URL="https://git:${GITLAB_TOKEN}@${CLEAN_REPO}"
+          AUTH_URL="https://oauth2:${GITLAB_TOKEN}@${CLEAN_REPO}"
           git remote add hub "$AUTH_URL" || git remote set-url hub "$AUTH_URL"
           
-          # Push main branch and tags
-          git push hub main:main --force
+          # Try standard push first, fallback to force if needed
+          git push hub main:main || git push hub main:main --force
