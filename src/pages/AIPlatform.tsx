@@ -103,7 +103,7 @@ const AIPlatform = () => {
         <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
             <Navbar />
             <main className="relative pt-24 pb-32 overflow-hidden">
-                {/* Global Background Glows (Linear style) */}
+                {/* Global ambient lighting */}
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full pointer-events-none -z-10" />
                 <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-purple-500/5 blur-[150px] rounded-full pointer-events-none -z-10" />
 
@@ -123,7 +123,7 @@ const AIPlatform = () => {
                         </div>
 
                         <h1 className="mb-6 max-w-6xl text-[4rem] font-extrabold leading-[1] tracking-tight sm:text-[5.5rem] lg:text-[6.5rem] bg-clip-text text-transparent bg-gradient-to-br from-foreground to-muted-foreground/60 transition-all duration-500 text-center">
-                            The clinical OS for <br/><span className="text-foreground">neurological intelligence</span>
+                            The clinical OS for <br /><span className="text-foreground">neurological intelligence</span>
                         </h1>
 
                         <p className="mb-10 max-w-2xl text-lg sm:text-xl text-muted-foreground/80 leading-relaxed transition-all duration-500 text-center font-medium mx-auto">
@@ -134,12 +134,12 @@ const AIPlatform = () => {
 
                 {/* Interactive Desktop Section */}
                 <section className="relative z-10 w-full min-h-[900px] px-4 py-20 overflow-hidden">
-                    <div 
+                    <div
                         ref={desktopRef}
                         className="relative w-full max-w-[1700px] h-[850px] mx-auto rounded-[32px] border border-white/5 bg-zinc-950/50 overflow-hidden shadow-2xl group"
                     >
-                        {/* Background Desktop Image with Parallax-esque feel */}
-                        <div 
+                        {/* Environment background layer */}
+                        <div
                             className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-[1.02]"
                             style={{ backgroundImage: 'url("/desktop.png")' }}
                         />
@@ -177,7 +177,7 @@ const AIPlatform = () => {
                             className={`z-20 flex flex-col rounded-xl overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.7)] border border-white/20 bg-background/90 backdrop-blur-3xl ${isDragging ? 'cursor-grabbing select-none' : ''}`}
                         >
                             {/* Window Header (Title Bar) */}
-                            <div 
+                            <div
                                 onMouseDown={handleDragStart}
                                 className="h-11 flex items-center justify-between px-4 bg-zinc-900/40 border-b border-white/5 cursor-grab active:cursor-grabbing backdrop-blur-md"
                             >
@@ -195,13 +195,13 @@ const AIPlatform = () => {
                                 <div className="flex items-center gap-4">
                                     {/* Variant Toggle inside Window */}
                                     <div className="flex items-center p-0.5 rounded-lg bg-black/20 border border-white/5">
-                                        <button 
+                                        <button
                                             onClick={() => setActiveVariant('doctor')}
                                             className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all ${activeVariant === 'doctor' ? 'bg-primary text-white shadow-lg' : 'text-white/40 hover:text-white'}`}
                                         >
                                             DOCTOR
                                         </button>
-                                        <button 
+                                        <button
                                             onClick={() => setActiveVariant('patient')}
                                             className={`px-3 py-1 rounded-md text-[10px] font-bold transition-all ${activeVariant === 'patient' ? 'bg-primary text-white shadow-lg' : 'text-white/40 hover:text-white'}`}
                                         >
@@ -231,7 +231,7 @@ const AIPlatform = () => {
                             </div>
 
                             {/* Resize Handle */}
-                            <div 
+                            <div
                                 onMouseDown={handleResizeStart}
                                 className="absolute bottom-0 right-0 w-6 h-6 cursor-nwse-resize z-30 flex items-center justify-center"
                             >
@@ -239,17 +239,17 @@ const AIPlatform = () => {
                             </div>
                         </div>
 
-                        {/* Desktop Taskbar (Linear Aesthetic) */}
+                        {/* Environment taskbar */}
                         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-3 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center gap-6 shadow-2xl z-10 transition-transform duration-500 hover:scale-105">
-                             <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30"><Sparkles size={18} className="text-primary" /></div>
-                             <div className="h-4 w-px bg-white/10" />
-                             <div className="flex items-center gap-4">
+                            <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30"><Sparkles size={18} className="text-primary" /></div>
+                            <div className="h-4 w-px bg-white/10" />
+                            <div className="flex items-center gap-4">
                                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${activeVariant === 'doctor' ? 'bg-white/10' : 'hover:bg-white/5'}`}><Stethoscope size={18} className="text-white/80" /></div>
                                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-colors ${activeVariant === 'patient' ? 'bg-white/10' : 'hover:bg-white/5'}`}><Users size={18} className="text-white/80" /></div>
-                             </div>
+                            </div>
                         </div>
                     </div>
-                    
+
                     {/* Shadow for the desktop container */}
                     <div className="absolute -inset-x-20 bottom-0 h-1/2 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />
                 </section>
@@ -345,7 +345,7 @@ const AIPlatform = () => {
                     </div>
                 </section>
 
-                {/* --- 5 Linear Scrolling Sections --- */}
+                {/* --- Scroll-linked sections --- */}
 
                 {/* Section 1: Intake */}
                 <section className="relative z-10 px-6 py-24 max-w-6xl mx-auto flex flex-col gap-16 border-t border-border/10">
