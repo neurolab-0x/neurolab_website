@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { ArrowLeft, Terminal } from "lucide-react";
 
@@ -21,6 +22,10 @@ const NotFound = () => {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      <SEO
+        title="404 - Not Found"
+        description="The page you are looking for does not exist."
+      />
       <Navbar />
       <main className="flex flex-1 items-center justify-center px-6 pt-12">
         <div
