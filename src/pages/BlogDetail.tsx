@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { getBlogPostBySlug, BlogPost } from '@/lib/content';
 import { ArrowLeft, Clock } from 'lucide-react';
 
@@ -40,6 +41,13 @@ const BlogDetail = () => {
 
     return (
         <div className="min-h-screen bg-background flex flex-col">
+            <SEO
+                title={post.title}
+                description={post.excerpt}
+                canonical={`/blog/${slug}`}
+                ogType="article"
+                ogImage={post.coverImage}
+            />
             <Navbar />
 
             <main className="flex-1 pt-24 pb-32">
