@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTheme } from 'next-themes';
-import { ArrowUpRight, Sun, Moon } from 'lucide-react';
+import { Sun, Moon } from 'lucide-react';
 
 const sfPro = "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
 
@@ -8,9 +8,9 @@ const linkGroups = [
     {
         title: 'Product',
         links: [
-            { label: 'Technology', href: '/#technology' },
-            { label: 'Research', href: '/blog?category=Research' },
-            { label: 'Safety', href: '/#safety' },
+            { label: 'Technology', to: '/#technology' },
+            { label: 'Research', to: '/blog?category=Research' },
+            { label: 'Safety', to: '/#safety' },
             { label: 'Neurolab Platform', to: '/ai-platform' },
             { label: 'Shop', to: '/shop' },
         ],
@@ -28,16 +28,16 @@ const linkGroups = [
         title: 'Resources',
         links: [
             { label: 'Documentation', to: '/docs' },
-            { label: 'API Reference', to: '/docs' },
-            { label: 'System Status', href: '#' },
+            { label: 'API Reference', to: '/docs#api-reference' },
+            { label: 'System Status', to: '/docs#system-status' },
         ],
     },
     {
         title: 'Legal',
         links: [
-            { label: 'Privacy Policy', href: '#' },
-            { label: 'Terms of Service', href: '#' },
-            { label: 'Cookie Policy', href: '#' },
+            { label: 'Privacy Policy', to: '/legal#privacy' },
+            { label: 'Terms of Service', to: '/legal#terms' },
+            { label: 'Cookie Policy', to: '/legal#cookies' },
         ],
     },
 ];
@@ -101,21 +101,14 @@ const Footer = () => {
                             <ul className="space-y-3">
                                 {group.links.map((link) => (
                                     <li key={link.label}>
-                                        {'to' in link && link.to ? (
+                                        {'to' in link ? (
                                             <Link
                                                 to={link.to}
                                                 className="text-sm text-foreground transition-opacity duration-300 hover:opacity-60"
                                             >
                                                 {link.label}
                                             </Link>
-                                        ) : (
-                                            <a
-                                                href={link.href}
-                                                className="text-sm text-foreground transition-opacity duration-300 hover:opacity-60"
-                                            >
-                                                {link.label}
-                                            </a>
-                                        )}
+                                        ):""}
                                     </li>
                                 ))}
                             </ul>

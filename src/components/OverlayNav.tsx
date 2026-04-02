@@ -63,15 +63,7 @@ const OverlayNav = () => {
       setTimeout(() => {
         setOpen(false);
         setExiting(false);
-        if (to.startsWith('/#') && to !== '/#') {
-          navigate('/');
-          setTimeout(() => {
-            const id = to.replace('/#', '');
-            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
-        } else {
-          navigate(to);
-        }
+        navigate(to);
       }, 400);
     },
     [navigate]
@@ -141,7 +133,9 @@ const OverlayNav = () => {
                 <div className="space-y-5">
                   {section.links.map((link) => {
                     const idx = linkIdx++;
-                    const isActive = location.pathname === link.to || (link.to.startsWith('/#') && location.pathname === '/');
+                    const isActive =
+                      location.pathname + location.hash === link.to ||
+                      (link.to.startsWith('/#') && location.pathname === '/' && !location.hash);
                     return (
                       <button
                         key={link.label}

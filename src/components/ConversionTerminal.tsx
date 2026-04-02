@@ -26,7 +26,7 @@ const ConversionTerminal = () => {
     );
 
     return (
-        <section className="px-6 py-0">
+        <section id="waitlist" className="px-6 py-0 scroll-m-24">
             <div
                 ref={ref}
                 className="mx-auto max-w-6xl overflow-hidden rounded-[32px]"

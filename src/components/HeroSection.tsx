@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const sfPro = "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
@@ -91,8 +92,8 @@ const HeroSection = () => {
             transitionDelay: '600ms',
           }}
         >
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-flex h-12 items-center gap-2 rounded-full px-8 text-sm font-medium text-white transition-all duration-500 hover:-translate-y-0.5 active:scale-[0.98]"
             style={{
               background: '#0F172A',
@@ -100,14 +101,14 @@ const HeroSection = () => {
             }}
           >
             Secure Access
-          </a>
-          <a
-            href="#technology"
+          </Link>
+          <Link
+            to="/#waitlist"
             className="inline-flex h-12 items-center gap-2 rounded-full px-8 text-sm font-medium border border-slate-500 text-slate-500 transition-opacity duration-300 hover:opacity-70"
           >
             Join Waitlist →
             
-          </a>
+          </Link>
         </div>
       </div>
 
