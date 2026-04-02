@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import {
   ArrowUpRight, ArrowRight, X, Copy, Check,
@@ -240,6 +241,11 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Contact Us"
+        description="Get in touch with the NeuroLab team for inquiries about our clinical-grade neural interfaces and AI platform."
+        canonical="/contact"
+      />
       <Navbar />
       <main className="pt-12">
         {/* ── HERO ── */}
