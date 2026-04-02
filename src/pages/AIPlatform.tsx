@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Brain, ArrowRight, Sparkles, Triangle, Box, Circle, Hexagon, Diamond, Octagon, Stethoscope, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -101,6 +102,11 @@ const AIPlatform = () => {
 
     return (
         <div className="min-h-screen bg-background text-foreground selection:bg-primary/30">
+            <SEO
+                title="AI Platform"
+                description="The clinical OS for neurological intelligence. Draggable workspaces, AI assistants, and real-time neural analysis."
+                canonical="/platform"
+            />
             <Navbar />
             <main className="relative pt-24 pb-32 overflow-hidden">
                 {/* Global ambient lighting */}
