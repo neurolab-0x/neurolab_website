@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import HeroHalo from '@/components/HeroHalo';
 import { Sparkles, Check, ChevronDown, ArrowRight, ShieldCheck, Database, HardDrive, Cpu, Layers } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -69,6 +70,11 @@ const Shop = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground" style={{ WebkitFontSmoothing: 'antialiased' }}>
+      <SEO
+        title="Shop Nexus Series"
+        description="Configure and commission your Nexus Series neural interface. Select edition, sensor density, and storage options."
+        canonical="/shop"
+      />
       <Navbar />
       <main className="pt-12 relative">
         <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 lg:grid-cols-2 relative pb-32">
