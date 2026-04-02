@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ArrowLeft, ArrowUpRight, MapPin, Briefcase, Clock } from 'lucide-react';
 import { getRoleBySlug } from '@/lib/content';
@@ -37,6 +38,11 @@ const RoleDetail = () => {
 
     return (
         <div className="min-h-screen bg-background">
+            <SEO
+                title={role.title}
+                description={role.about}
+                canonical={`/careers/${slug}`}
+            />
             <Navbar />
             <main className="pt-12">
                 {/* ── BACK NAV ── */}
