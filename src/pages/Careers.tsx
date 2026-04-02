@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Minus, Plus, ArrowUpRight } from 'lucide-react';
 import { getDepartments, type Department } from '@/lib/content';
@@ -95,6 +96,11 @@ const Careers = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Careers"
+        description="Join the frontier of neural interface technology. Explore open roles in engineering, clinical research, and product design."
+        canonical="/careers"
+      />
       <Navbar />
       <main className="pt-12">
         {/* ── HERO ── */}
