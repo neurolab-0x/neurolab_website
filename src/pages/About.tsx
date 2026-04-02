@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Crosshair, ShieldCheck, Eye } from 'lucide-react';
 
@@ -11,8 +12,8 @@ const values = [
 
 const leaders = [
   { name: 'Asimwe Landry C. E.', role: 'Chief Executive Officer', field: 'Computational Neuroscience' },
-  { name: 'Aine Dushimire', role: 'Chief Technology Officer', field: 'Neural Engineering' },
-  { name: 'Prosper Mugisha', role: 'Chief Science Officer', field: 'Clinical Neurophysiology' },
+  { name: 'Aine Dushimire', role: 'Chief Operation Officer', field: 'Neural Engineering' },
+  { name: 'Prosper Mugisha', role: 'Chief Technology Officer', field: 'Clinical Neurophysiology' },
   { name: 'Esther Hope Uhirwe', role: 'VP of Engineering', field: 'Embedded Systems' },
   { name: 'Winny Darlene', role: 'VP of Engineering', field: 'Embedded Systems' },
 
@@ -26,6 +27,11 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="About Us"
+        description="Learn about NeuroLab's mission to empower specialists with AI-driven neuro-diagnostics and telemetry platforms."
+        canonical="/about"
+      />
       <Navbar />
       <main className="pt-12">
         {/* Full-viewport editorial hero */}
