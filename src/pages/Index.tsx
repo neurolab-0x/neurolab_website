@@ -5,10 +5,15 @@ import BentoGrid from '@/components/SpecGrid';
 import InfiniteDirectory from '@/components/InfiniteDirectory';
 import ConversionTerminal from '@/components/ConversionTerminal';
 import PartnersSection from '@/components/PartnersSection';
+import SEO from '@/components/SEO';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Clinical-Grade Neural Interfaces"
+        description="Neurolab builds clinical-grade neural interfaces engineered for precision, safety, and the next era of human-computer interaction."
+      />
       <Navbar />
       <main>
         {/* SECTION 1: The Surgical Hero */}
