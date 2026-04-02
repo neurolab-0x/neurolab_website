@@ -10,17 +10,17 @@ const Navbar = () => {
         </Link>
         <div className="flex items-center gap-8">
           {[
-            { label: 'Technology', href: '/#technology' },
-            { label: 'Research', href: '/blog?category=Research' },
-            { label: 'Product', href: '/' },
+            { label: 'Technology', to: '/#technology' },
+            { label: 'Research', to: '/blog?category=Research' },
+            { label: 'Product', to: '/shop' },
           ].map((item) => (
-            <a
+            <Link
               key={item.label}
-              href={item.href}
+              to={item.to}
               className="hidden text-sm text-muted-foreground transition-opacity duration-300 hover:opacity-70 sm:inline"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
           <OverlayNav />
         </div>

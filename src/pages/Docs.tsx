@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
@@ -31,6 +31,15 @@ interface DocLink {
     href?: string;
 }
 
+const slugify = (label: string) =>
+    label
+        .toLowerCase()
+        .replace(/&/g, 'and')
+        .replace(/[\s/+]+/g, '-')
+        .replace(/[^a-z0-9-]/g, '')
+        .replace(/-+/g, '-')
+        .replace(/^-|-$/g, '');
+
 interface DocSection {
     title: string;
     icon: React.ElementType;
@@ -42,64 +51,64 @@ const docSections: DocSection[] = [
         title: 'Getting Started',
         icon: BookOpen,
         links: [
-            { label: 'Introduction' },
-            { label: 'Quick Start Guide' },
-            { label: 'System Requirements' },
-            { label: 'Installation' },
-            { label: 'Authentication' },
+            { label: 'Introduction', href: '#introduction' },
+            { label: 'Quick Start Guide', href: '#authentication' },
+            { label: 'System Requirements', href: '#authentication' },
+            { label: 'Installation', href: '#authentication' },
+            { label: 'Authentication', href: '#authentication' },
         ],
     },
     {
         title: 'API Reference',
         icon: Terminal,
         links: [
-            { label: 'REST API Overview' },
-            { label: 'WebSocket Streams' },
-            { label: 'Authentication & Tokens' },
-            { label: 'Rate Limits' },
-            { label: 'Error Codes' },
+            { label: 'REST API Overview', href: '#api-reference' },
+            { label: 'WebSocket Streams', href: '#real-time-streaming' },
+            { label: 'Authentication & Tokens', href: '#authentication' },
+            { label: 'Rate Limits', href: '#api-reference' },
+            { label: 'Error Codes', href: '#api-reference' },
         ],
     },
     {
         title: 'Device SDK',
         icon: Cpu,
         links: [
-            { label: 'SDK Installation' },
-            { label: 'Device Pairing' },
-            { label: 'Firmware Updates' },
-            { label: 'Channel Configuration' },
-            { label: 'Signal Processing' },
+            { label: 'SDK Installation', href: '#official-sdks' },
+            { label: 'Device Pairing', href: '#official-sdks' },
+            { label: 'Firmware Updates', href: '#official-sdks' },
+            { label: 'Channel Configuration', href: '#official-sdks' },
+            { label: 'Signal Processing', href: '#official-sdks' },
         ],
     },
     {
         title: 'Clinical Protocols',
         icon: Activity,
         links: [
-            { label: 'Safety Guidelines' },
-            { label: 'Implantation Procedure' },
-            { label: 'Post-Op Monitoring' },
-            { label: 'Adverse Event Reporting' },
+            { label: 'Safety Guidelines', href: '#system-status' },
+            { label: 'Implantation Procedure', href: '#system-status' },
+            { label: 'Post-Op Monitoring', href: '#system-status' },
+            { label: 'Adverse Event Reporting', href: '#system-status' },
         ],
     },
     {
         title: 'Data Formats',
         icon: FileCode2,
         links: [
-            { label: 'NWB Export' },
-            { label: 'EDF/BDF Compatibility' },
-            { label: 'Raw Binary Format' },
-            { label: 'Metadata Schema' },
+            { label: 'NWB Export', href: '#system-status' },
+            { label: 'EDF/BDF Compatibility', href: '#system-status' },
+            { label: 'Raw Binary Format', href: '#system-status' },
+            { label: 'Metadata Schema', href: '#system-status' },
         ],
     },
     {
         title: 'Integrations',
         icon: Plug,
         links: [
-            { label: 'MATLAB Toolbox' },
-            { label: 'Python SDK' },
-            { label: 'Jupyter Notebooks' },
-            { label: 'Cloud Storage' },
-            { label: 'Webhooks' },
+            { label: 'MATLAB Toolbox', href: '#official-sdks' },
+            { label: 'Python SDK', href: '#official-sdks' },
+            { label: 'Jupyter Notebooks', href: '#official-sdks' },
+            { label: 'Cloud Storage', href: '#official-sdks' },
+            { label: 'Webhooks', href: '#webhooks' },
         ],
     },
 ];
@@ -185,26 +194,30 @@ const SidebarSection = ({
                 }}
             >
                 <div className="ml-[22px] border-l border-border pl-3 pt-0.5">
-                    {section.links.map((link) => (
-                        <button
-                            key={link.label}
-                            onClick={() => onSelect(link.label)}
-                            className="block w-full rounded-md px-2.5 py-1.5 text-left text-[13px] transition-colors duration-200"
-                            style={{
-                                color:
-                                    activeDoc === link.label
-                                        ? 'hsl(var(--foreground))'
-                                        : 'hsl(var(--muted-foreground))',
-                                background:
-                                    activeDoc === link.label
-                                        ? 'hsl(var(--secondary))'
-                                        : 'transparent',
-                                fontWeight: activeDoc === link.label ? 500 : 400,
-                            }}
-                        >
-                            {link.label}
-                        </button>
-                    ))}
+                    {section.links.map((link) => {
+                        const linkHash = link.href || `#${slugify(link.label)}`;
+                        return (
+                            <Link
+                                key={link.label}
+                                to={linkHash}
+                                onClick={() => onSelect(link.label)}
+                                className="block w-full rounded-md px-2.5 py-1.5 text-left text-[13px] transition-colors duration-200"
+                                style={{
+                                    color:
+                                        activeDoc === link.label
+                                            ? 'hsl(var(--foreground))'
+                                            : 'hsl(var(--muted-foreground))',
+                                    background:
+                                        activeDoc === link.label
+                                            ? 'hsl(var(--secondary))'
+                                            : 'transparent',
+                                    fontWeight: activeDoc === link.label ? 500 : 400,
+                                }}
+                            >
+                                {link.label}
+                            </Link>
+                        );
+                    })}
                 </div>
             </div>
         </div>
@@ -216,7 +229,24 @@ const Docs = () => {
     const [activeDoc, setActiveDoc] = useState('Introduction');
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const location = useLocation();
     const { ref: contentRef, isVisible: contentVis } = useScrollReveal(0.05);
+
+    useEffect(() => {
+        if (!location.hash) {
+            setActiveDoc('Introduction');
+            return;
+        }
+
+        const normalizedHash = location.hash.startsWith('#') ? location.hash : `#${location.hash}`;
+        const findMatch = docSections
+            .flatMap((section) => section.links)
+            .find((link) => (link.href || `#${slugify(link.label)}`) === normalizedHash);
+
+        if (findMatch) {
+            setActiveDoc(findMatch.label);
+        }
+    }, [location.hash]);
 
     const filteredSections = searchQuery
         ? docSections
@@ -312,8 +342,8 @@ const Docs = () => {
                             transitionTimingFunction: cardEasing,
                         }}
                     >
-                        {/* Header */}
-                        <div className="mb-12">
+                        {/* Introduction */}
+                        <section id="introduction" className="mb-12 scroll-m-24">
                             <p className="mb-3 text-xs font-medium uppercase tracking-widest text-primary">
                                 Official Documentation
                             </p>
@@ -332,13 +362,13 @@ const Docs = () => {
                             <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">
                                 Everything you need to integrate your applications with the world's most advanced clinical-grade neural interface platform. Follow the guides below to authenticate, stream real-time data, and run predictive analysis.
                             </p>
-                        </div>
+                        </section>
 
                         {/* Divider */}
                         <div className="mb-16 border-b border-surface-border w-full" />
 
                         {/* Authentication */}
-                        <section className="mb-20">
+                        <section id="authentication" className="mb-20 scroll-m-24">
                             <h2
                                 className="mb-4 text-2xl font-semibold text-foreground tracking-tight"
                                 style={{ fontFamily: sfPro }}
@@ -364,7 +394,7 @@ const Docs = () => {
                         </section>
 
                         {/* REST API Endpoints */}
-                        <section className="mb-20">
+                        <section id="api-reference" className="mb-20 scroll-m-24">
                             <h2
                                 className="mb-4 text-2xl font-semibold text-foreground tracking-tight"
                                 style={{ fontFamily: sfPro }}
@@ -421,7 +451,7 @@ const Docs = () => {
                         </section>
 
                         {/* Real-Time WebSocket Streaming */}
-                        <section className="mb-20">
+                        <section id="real-time-streaming" className="mb-20 scroll-m-24">
                             <h2
                                 className="mb-4 text-2xl font-semibold text-foreground tracking-tight"
                                 style={{ fontFamily: sfPro }}
@@ -461,7 +491,7 @@ ws.onmessage = (event) => {
                         </section>
 
                         {/* Webhooks */}
-                        <section className="mb-20">
+                        <section id="webhooks" className="mb-20 scroll-m-24">
                             <h2
                                 className="mb-4 text-2xl font-semibold text-foreground tracking-tight"
                                 style={{ fontFamily: sfPro }}
@@ -484,7 +514,7 @@ ws.onmessage = (event) => {
                         </section>
 
                         {/* Official SDKs */}
-                        <section className="mb-20">
+                        <section id="official-sdks" className="mb-20 scroll-m-24">
                             <h2
                                 className="mb-4 text-2xl font-semibold text-foreground tracking-tight"
                                 style={{ fontFamily: sfPro }}
@@ -519,17 +549,17 @@ client.connect_stream()`}
                         </section>
 
                         {/* Help section */}
-                        <section className="mt-8 rounded-2xl border border-primary/20 bg-primary/5 p-8 text-center relative overflow-hidden">
+                        <section id="system-status" className="mt-8 rounded-2xl border border-primary/20 bg-primary/5 p-8 text-center relative overflow-hidden scroll-m-24">
                             <Shield size={28} className="mx-auto mb-4 text-primary" />
-                            <h3 className="mb-2 text-xl font-semibold text-foreground tracking-tight">Need technical support?</h3>
+                            <h3 className="mb-2 text-xl font-semibold text-foreground tracking-tight">System status: operational</h3>
                             <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-                                Enterprise customers have access to a dedicated Slack channel with our core engineers. For all others, reach out to our technical support team.
+                                All public Neurolab platform services are currently operational. If you need environment-specific support or incident follow-up, contact the team directly.
                             </p>
                             <Link
                                 to="/contact"
                                 className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-medium text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.3)] transition-all hover:scale-105"
                             >
-                                Open a Support Ticket
+                                Contact support
                                 <ArrowRight size={16} />
                             </Link>
                         </section>

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import SurgicalLoader from "@/components/SurgicalLoader";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import ScrollToHash from "@/components/ScrollToHash";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
 import About from "./pages/About";
@@ -16,6 +17,7 @@ import AIPlatform from "./pages/AIPlatform";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import Docs from "./pages/Docs";
+import Legal from "./pages/Legal";
 import NotFound from "./pages/NotFound";
 import CookieConsent from "./components/CookieConsent";
 
@@ -29,6 +31,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <SurgicalLoader />
+          <ScrollToHash />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/shop" element={<Shop />} />
@@ -40,6 +43,7 @@ const App = () => (
             <Route path="/blog/:slug" element={<BlogDetail />} />
             <Route path="/docs" element={<Docs />} />
             <Route path="/ai-platform" element={<AIPlatform />} />
+            <Route path="/legal" element={<Legal />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

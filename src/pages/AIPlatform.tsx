@@ -105,7 +105,7 @@ const AIPlatform = () => {
             <SEO
                 title="AI Platform"
                 description="The clinical OS for neurological intelligence. Draggable workspaces, AI assistants, and real-time neural analysis."
-                canonical="/platform"
+                canonical="/ai-platform"
             />
             <Navbar />
             <main className="relative pt-24 pb-32 overflow-hidden">

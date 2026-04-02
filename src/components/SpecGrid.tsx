@@ -121,7 +121,7 @@ const BentoGrid = () => {
   const uptime = useCounter(99, 1800);
 
   return (
-    <section id="technology" className="bg-white px-6 py-32">
+    <section id="technology" className="bg-white px-6 py-32 scroll-m-24">
       <div className="mx-auto max-w-6xl">
         {/* Section header */}
         <div
@@ -369,8 +369,9 @@ const DarkFeatureCard = () => {
 
   return (
     <div
+      id="safety"
       ref={ref}
-      className="mt-4 overflow-hidden rounded-3xl"
+      className="mt-4 overflow-hidden rounded-3xl scroll-m-24"
       style={{
         background: '#0F172A',
         opacity: isVisible ? 1 : 0,
