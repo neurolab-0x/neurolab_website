@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { getBlogPosts, type BlogPost } from '@/lib/content';
 import { ArrowUpRight, Clock } from 'lucide-react';
@@ -155,6 +156,11 @@ const Blog = () => {
 
     return (
         <div className="min-h-screen bg-background">
+            <SEO
+                title="Blog"
+                description="Insights, engineering deep-dives, and clinical milestones from the NeuroLab team."
+                canonical="/blog"
+            />
             <Navbar />
             <main className="pt-12">
                 {/* ── HERO ── */}
