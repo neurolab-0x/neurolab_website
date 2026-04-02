@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import {
     ArrowRight,
@@ -230,6 +231,11 @@ const Docs = () => {
 
     return (
         <div className="flex h-screen flex-col overflow-hidden bg-background">
+            <SEO
+                title="Documentation"
+                description="Comprehensive guides for integrating with the NeuroLab API, SDKs, and clinical platform."
+                canonical="/docs"
+            />
             <Navbar />
             <div className="flex flex-1 overflow-hidden pt-12">
                 {/* ── SIDEBAR ── */}
