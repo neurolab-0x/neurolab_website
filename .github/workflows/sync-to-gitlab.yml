@@ -1,12 +1,13 @@
 name: Sync to GitLab
 
-# Disabled temporarily per request
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
   sync:
-    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source
@@ -16,7 +17,7 @@ jobs:
 
       - name: Mirror to GitLab (Lab)
         env:
-          GITLAB_REPO: ${{ secrets.GITLAB_LAB_REPO_URL || 'git@gitlab.com:neurolab.inc/neurolab_webapp' }}
+          GITLAB_REPO: ${{ secrets.GITLAB_LAB_REPO_URL }}
           GITLAB_TOKEN: ${{ secrets.GITLAB_LAB_TOKEN || secrets.GITLAB_TOKEN }}
         run: |
           if [[ -z "$GITLAB_REPO" || -z "$GITLAB_TOKEN" ]]; then
@@ -40,7 +41,7 @@ jobs:
 
       - name: Mirror to GitLab (Hub)
         env:
-          GITLAB_REPO: ${{ secrets.GITLAB_HUB_REPO_URL || 'git@gitlab.com:neurolab.inc/neurolab_webapp' }}
+          GITLAB_REPO: ${{ secrets.GITLAB_HUB_REPO_URL }}
           GITLAB_TOKEN: ${{ secrets.GITLAB_HUB_TOKEN || secrets.GITLAB_TOKEN }}
         run: |
           if [[ -z "$GITLAB_REPO" || -z "$GITLAB_TOKEN" ]]; then
@@ -59,3 +60,25 @@ jobs:
           
           # Try standard push first, fallback to force if needed
           git push hub main:main || git push hub main:main --force
+
+      - name: Mirror to GitLab (Prod)
+        env:
+          GITLAB_REPO: ${{ secrets.GITLAB_PROD_REPO_URL }}
+          GITLAB_TOKEN: ${{ secrets.GITLAB_PROD_TOKEN || secrets.GITLAB_TOKEN }}
+        run: |
+          if [[ -z "$GITLAB_REPO" || -z "$GITLAB_TOKEN" ]]; then
+            echo "Error: Missing Prod GitLab secrets. Please ensure GITLAB_REPO and GITLAB_TOKEN are set."
+            exit 1
+          fi
+
+          # Clean up repo URL for oauth2 format
+          CLEAN_REPO=${GITLAB_REPO#https://}
+          CLEAN_REPO=${CLEAN_REPO#git@}
+          CLEAN_REPO=${CLEAN_REPO/:/\/}
+          CLEAN_REPO=${CLEAN_REPO%.git}.git # Always ends in .git
+
+          AUTH_URL="https://oauth2:${GITLAB_TOKEN}@${CLEAN_REPO}"
+          git remote add prod "$AUTH_URL" || git remote set-url prod "$AUTH_URL"
+          
+          # Try standard push first, fallback to force if needed
+          git push prod main:main || git push prod main:main --force
