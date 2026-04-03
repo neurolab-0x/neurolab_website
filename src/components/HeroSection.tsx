@@ -93,7 +93,7 @@ const HeroSection = () => {
           }}
         >
           <Link
-            to="/contact"
+            to="/secure-access"
             className="inline-flex h-12 items-center gap-2 rounded-full px-8 text-sm font-medium text-white transition-all duration-500 hover:-translate-y-0.5 active:scale-[0.98]"
             style={{
               background: '#0F172A',
