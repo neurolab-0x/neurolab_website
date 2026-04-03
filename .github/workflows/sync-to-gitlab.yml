@@ -1,13 +1,12 @@
 name: Sync to GitLab
 
+# Disabled temporarily per request
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
   sync:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Source
