@@ -23,11 +23,11 @@ const NotFound = () => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <SEO
-        title="404 - Not Found"
-        description="The page you are looking for does not exist."
+        title="404 - Page not found"
+        description="We couldn’t find the page you are looking for."
       />
       <Navbar />
-      <main className="flex flex-1 items-center justify-center px-6 pt-12">
+      <main className="flex flex-1 items-center justify-center px-6 py-20">
         <div
           ref={ref}
           className="w-full max-w-lg text-center transition-all duration-[800ms]"
@@ -56,7 +56,8 @@ const NotFound = () => {
           </h1>
 
           <p className="mx-auto mb-10 max-w-[320px] text-base leading-relaxed text-muted-foreground">
-            The endpoint you requested could not be found. Please verify the URL or return to the active layout.
+            Oops! The page you tried to visit doesn’t exist yet or the link might be outdated.
+            Please check the address or go back to the home page to continue.
           </p>
 
           <Link
