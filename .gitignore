@@ -15,6 +15,7 @@ dist
 dist-ssr
 *.local
 
+
 sync-gitlab.sh
 
 # Editor directories and files
