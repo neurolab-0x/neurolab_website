@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -135,11 +136,11 @@ const Blog = () => {
     const navigate = useNavigate();
 
     // Initialize activeCategory from URL if present and valid
-    const getInitialCategory = () => {
+    const getInitialCategory = React.useCallback(() => {
         const params = new URLSearchParams(location.search);
         const urlCat = params.get('category');
-        return urlCat && categories.includes(urlCat as any) ? urlCat : 'All';
-    };
+        return urlCat && (categories as readonly string[]).includes(urlCat) ? urlCat : 'All';
+    }, [location.search]);
 
     const [activeCategory, setActiveCategory] = useState<string>(getInitialCategory());
     const { ref: heroRef, isVisible: heroVis } = useScrollReveal(0.1);
@@ -147,7 +148,7 @@ const Blog = () => {
 
     useEffect(() => {
         setActiveCategory(getInitialCategory());
-    }, [location.search]);
+    }, [location.search, getInitialCategory]);
 
     const filtered =
         activeCategory === 'All'
