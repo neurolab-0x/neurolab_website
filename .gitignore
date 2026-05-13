@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-.env
 
 .lovable/
 
@@ -29,3 +28,4 @@ sync-gitlab.sh
 *.sln
 *.sw?
 .vercel
+config.bat
