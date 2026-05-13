@@ -20,6 +20,7 @@ import {
     Menu,
     X,
 } from 'lucide-react';
+import CodeBlock from '@/components/CodeBlock';
 
 const sfPro =
     "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif";
@@ -379,18 +380,13 @@ const Docs = () => {
                                 All API requests require a Bearer token. You can generate a persistent API Key from your developer dashboard, or use OAuth 2.0 flows for user-delegated access. Include the token in the <code className="bg-secondary px-1.5 py-0.5 rounded text-sm text-foreground">Authorization</code> header.
                             </p>
 
-                            <div className="overflow-hidden rounded-xl border border-surface-border bg-card">
-                                <div className="flex items-center px-4 py-3 border-b border-surface-border bg-secondary/50">
-                                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Authentication Header Example</span>
-                                </div>
-                                <pre className="p-4 text-sm text-slate-300 overflow-x-auto">
-                                    <code>
-                                        {`curl -X GET https://api.neurolab.inc/v1/sessions \\
+                            <CodeBlock
+                                language="bash"
+                                title="Authentication Header Example"
+                                code={`curl -X GET https://api.neurolab.inc/v1/sessions \\
   -H "Authorization: Bearer dev_sk_abc1234567890def..." \\
   -H "Content-Type: application/json"`}
-                                    </code>
-                                </pre>
-                            </div>
+                            />
                         </section>
 
                         {/* REST API Endpoints */}
@@ -415,9 +411,11 @@ const Docs = () => {
                                     <div className="p-4 border-b border-surface-border">
                                         <p className="text-sm text-muted-foreground">Retrieves the complete processed neural analysis for a specific session, including anomalous wave detection and power spectral density profiles.</p>
                                     </div>
-                                    <pre className="p-4 text-sm text-slate-300 overflow-x-auto">
-                                        <code>
-                                            {`{
+                                    <CodeBlock
+                                        language="json"
+                                        title="JSON Response"
+                                        className="my-0 rounded-none border-0"
+                                        code={`{
   "session_id": "ses_9x8c7v6b5n",
   "status": "completed",
   "analysis_summary": {
@@ -433,8 +431,7 @@ const Docs = () => {
     }
   }
 }`}
-                                        </code>
-                                    </pre>
+                                    />
                                 </div>
 
                                 {/* Endpoint 2 */}
@@ -462,13 +459,10 @@ const Docs = () => {
                                 For live clinical dashboards and Brain-Computer Interfaces (BCI), use our low-latency WebSocket API to receive neural spike trains and raw LFP data in real time directly from the hardware.
                             </p>
 
-                            <div className="overflow-hidden rounded-xl border border-surface-border bg-card">
-                                <div className="flex items-center justify-between px-4 py-3 border-b border-surface-border bg-secondary/50">
-                                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">WebSocket Client (JavaScript)</span>
-                                </div>
-                                <pre className="p-4 text-sm text-slate-300 overflow-x-auto">
-                                    <code>
-                                        {`const ws = new WebSocket("wss://stream.neurolab.inc/v1/neural");
+                            <CodeBlock
+                                language="javascript"
+                                title="WebSocket Client (JavaScript)"
+                                code={`const ws = new WebSocket("wss://stream.neurolab.inc/v1/neural");
 
 ws.onopen = () => {
   ws.send(JSON.stringify({
@@ -485,9 +479,7 @@ ws.onmessage = (event) => {
       updateCharts(data.timestamp, data.channel_data);
   }
 };`}
-                                    </code>
-                                </pre>
-                            </div>
+                            />
                         </section>
 
                         {/* Webhooks */}
@@ -525,13 +517,10 @@ ws.onmessage = (event) => {
                                 We maintain official libraries for Python and Node.js. They handle authentication, automatic retries, WebSocket stream parsing, and data serialization automatically.
                             </p>
 
-                            <div className="overflow-hidden rounded-xl border border-surface-border bg-card">
-                                <div className="flex items-center px-4 py-3 border-b border-surface-border bg-secondary/50">
-                                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Python Installation & Setup</span>
-                                </div>
-                                <pre className="p-4 text-sm text-slate-300 overflow-x-auto">
-                                    <code>
-                                        {`pip install neurolab-sdk
+                            <CodeBlock
+                                language="python"
+                                title="Python Installation & Setup"
+                                code={`pip install neurolab-sdk
 
 import neurolab
 
@@ -543,9 +532,7 @@ def handle_stream(data):
     print(f"Received amplitude: {data.ch1_uv}")
 
 client.connect_stream()`}
-                                    </code>
-                                </pre>
-                            </div>
+                            />
                         </section>
 
                         {/* Help section */}
