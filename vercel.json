@@ -1,9 +1,7 @@
 {
   "framework": "vite",
-  "rewrites": [
-    {
-      "source": "/((?!api/|assets/|favicon.ico|logo.png|robots.txt|sitemap.xml).*)",
-      "destination": "/index.html"
-    }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
